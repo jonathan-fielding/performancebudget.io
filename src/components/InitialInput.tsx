@@ -42,7 +42,7 @@ interface InitialInputProps {
  }
 
 const InitialInput: React.FC<InitialInputProps> = (props) => {
-  const classes = useStyles();
+  const classes = useStyles(props);
   const isMobile = useMediaQuery('(max-width:749px)');
 
   function updateLoadtime(event: any) {

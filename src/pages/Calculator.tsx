@@ -16,6 +16,7 @@ import ButtonBar from '../components/ButtonBar';
 import ErrorMessage from '../components/ErrorMessage';
 import BudgetCustomiser from '../components/BudgetCustomiser';
 import UploadButton from '../components/UploadButton';
+import Helper from '../components/Helper';
 
 // Custom utils
 import buildJson from '../utils/build-json';
@@ -145,10 +146,12 @@ const Calculator: React.FC = (props) => {
 
     return (
       <div>
-        <h2>Your budget:</h2>
-        <p>{total}kb of {budget}kb used</p>
+        <Helper type="alignCenter">
+          <h2>Your budget:</h2>
+          <p>{total}kb of {budget}kb used</p>
 
-        <p>Customise your budget</p>
+          <p>Customise your budget</p>
+        </Helper>
 
         <BudgetCustomiser
           budget={budget}
@@ -199,14 +202,14 @@ const Calculator: React.FC = (props) => {
 
   function step4() {
     return (
-      <div className="narrow-container">
+      <Helper type="alignCenter">
         <h2>Download lighthouse budget config</h2>
 
         <p>This performance budget calculator allows you to export the budget you have built as a lighthouse config file</p>
         <p>In addition if you later want to work on your budget further you can import it back into performancebudget.io</p>
 
         {buttons()}
-      </div>
+      </Helper>
     )
   }
 

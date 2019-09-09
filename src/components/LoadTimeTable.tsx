@@ -7,6 +7,13 @@ import TableRow from '@material-ui/core/TableRow';
 import HeaderTableCell from './HeaderTableCell';
 import BodyTableCell from './BodyTableCell';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    marginBottom: theme.spacing(3),
+  },
+}));
 
 const CONNECTION_SPEEDS = [
   {
@@ -47,7 +54,12 @@ const CONNECTION_SPEEDS = [
   }
 ];
 
-export default function LoadTimeTable(props) {
+interface LoadTimeTableProps {
+  total: number,
+}
+
+ const LoadTimeTable: React.FC<LoadTimeTableProps> = (props) => {
+  const classes = useStyles();
   const { total } = props;
   const isDesktop = useMediaQuery('(min-width:750px)');
 
@@ -60,7 +72,7 @@ export default function LoadTimeTable(props) {
 
   return ( 
     <Paper>
-      <Table>
+      <Table className={classes.root}>
         <TableHead>
           <TableRow>
             <HeaderTableCell>Connection Type</HeaderTableCell>
@@ -81,3 +93,5 @@ export default function LoadTimeTable(props) {
     </Paper>
   )
 }
+
+export default LoadTimeTable;

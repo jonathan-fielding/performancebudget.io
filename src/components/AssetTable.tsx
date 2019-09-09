@@ -19,9 +19,21 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     marginBottom: theme.spacing(2),
   },
+  table: {
+
+  }
 }));
 
-export default function AssetTable(props) {
+interface AssetTableProps {
+  css: any,
+  fonts: any,
+  html: any,
+  images: any,
+  video: any,
+  javascript: any,
+ }
+
+const AssetTable: React.FC<AssetTableProps> = (props) => {
   const classes = useStyles();
   const isDesktop = useMediaQuery('(min-width:750px)');
 
@@ -91,3 +103,5 @@ export default function AssetTable(props) {
     </Paper>
   )
 }
+
+export default AssetTable;
