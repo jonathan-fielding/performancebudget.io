@@ -1,6 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Tooltip from '@material-ui/core/Tooltip';
+import InfoIcon from '@material-ui/icons/Info';
+import IconButton from '@material-ui/core/IconButton';
 
 import lighthouseBudgetParser from '../utils/lighthouse-budget-parser';
 
@@ -9,6 +12,11 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
     marginTop: '10px',
   },
+  infoIcon: {
+    height: '15px',
+    width: '15px',
+    marginLeft: '5px',
+  }
 }));
 
 interface UploadButtonProps {
@@ -72,6 +80,9 @@ const UploadButton: React.FC<UploadButtonProps> = (props) => {
       <label htmlFor="raised-button-file">
         <Button>
           Upload existing budget
+          <Tooltip title="Upload your lighthouse performance budget">
+            <InfoIcon className={classes.infoIcon} />
+          </Tooltip>
         </Button>
       </label> 
     </div>

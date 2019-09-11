@@ -74,7 +74,7 @@ const InitialInput: React.FC<InitialInputProps> = (props) => {
         {isMobile ? <br /> : ''}
 
         <Select
-          value={props.speed}
+          value={props.speed || ''}
           onChange={updateSpeed}
           className={classes.select}
           input={<Input name="age" id="age-helper" />}
