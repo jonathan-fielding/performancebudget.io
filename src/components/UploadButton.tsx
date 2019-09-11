@@ -80,7 +80,7 @@ const UploadButton: React.FC<UploadButtonProps> = (props) => {
       <label htmlFor="raised-button-file">
         <Button>
           Upload existing budget
-          <Tooltip title="Upload your lighthouse performance budget as a starting point">
+          <Tooltip title="Upload your lighthouse performance budget as a starting point, other budget support coming soon.">
             <InfoIcon className={classes.infoIcon} />
           </Tooltip>
         </Button>
