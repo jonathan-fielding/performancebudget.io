@@ -11,6 +11,7 @@
     "@types/react-dom": "16.9.0",
     "@types/react-router-dom": "^4.3.5",
     "file-saver": "^2.0.2",
+    "netlify-lambda": "^1.6.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
