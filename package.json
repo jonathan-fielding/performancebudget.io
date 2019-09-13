@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && mkdir ./build/related && cp ./build/index.html ./build/related/index.html ",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

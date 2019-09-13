@@ -26,6 +26,7 @@ const useStyles = makeStyles(theme => ({
   query: {
     textAlign: 'center',
     fontSize: '1.1rem',
+    marginBottom: '20px',
   },
   button: {
     marginTop: '40px',
@@ -53,6 +54,13 @@ const InitialInput: React.FC<InitialInputProps> = (props) => {
     props.setSpeed(parseFloat(event.target.value));
   }
 
+  function validateInput(event: any) {
+    var charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      event.preventDefault();
+    }
+  }
+
   return (
     <div>
       <div className={classes.query}>
@@ -64,6 +72,7 @@ const InitialInput: React.FC<InitialInputProps> = (props) => {
           <Input
             id="loadtime"
             className={classes.input}
+            onKeyPress={validateInput}
             onKeyUp={updateLoadtime}
             defaultValue={props.loadtime}
           />
