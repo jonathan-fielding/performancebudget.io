@@ -26,6 +26,7 @@ const useStyles = makeStyles(theme => ({
   query: {
     textAlign: 'center',
     fontSize: '1.1rem',
+    marginBottom: '20px',
   },
   button: {
     marginTop: '40px',
