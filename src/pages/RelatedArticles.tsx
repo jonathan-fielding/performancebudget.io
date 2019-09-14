@@ -39,6 +39,20 @@ const RelatedArticles: React.FC = (props) => {
       </article>
 
       <hr />
+
+      <article>
+        <h3><a href="https://infrequently.org/2017/10/can-you-afford-it-real-world-web-performance-budgets/">Can You Afford It?: Real-world Web Performance Budgets</a></h3>
+        <blockquote>We’ve had the pleasure of working with dozens of teams over the past few years. This work has been illuminating, sometimes in very unexpected ways. One of the most surprising results has been the frequent occurrence of “ambush by JavaScript”</blockquote>
+        <cite><a href="https://twitter.com/slightlylate">Alex Russell</a></cite>
+      </article>
+
+      <hr />
+
+      <article>
+        <h3><a href="https://www.gov.uk/service-manual/technology/how-to-test-frontend-performance">How to test frontend performance - Gov UK</a></h3>
+        <blockquote>Websites that perform badly can frustrate users and drain their data plans and battery life. You can address this by making sure your service frontend is as fast and lightweight as possible.</blockquote>
+        <cite>Article does not specify author</cite>
+      </article>
     </div>
   );
 }
