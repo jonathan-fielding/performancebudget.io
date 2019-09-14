@@ -1,54 +1,30 @@
-const chromium = require('chrome-aws-lambda')
-const puppeteer = require('puppeteer-core')
+// index.js
 
-exports.handler = async (event, context, callback) => {
-  let theTitle = null
-  let browser = null
-  console.log('spawning chrome headless')
-  try {
-    const executablePath = await chromium.executablePath
+const createLighthouse = require('lighthouse-lambda')
 
-    // setup
-    browser = await puppeteer.launch({
-      args: chromium.args,
-      executablePath: executablePath,
-      headless: chromium.headless,
+exports.handler = function (event, context, callback) {
+  Promise.resolve()
+    .then(() => createLighthouse('https://www.google.com', { logLevel: 'info' }))
+    .then(({ chrome, start }) => {
+      return start()
+        .then((results) => {
+          return chrome.kill().then(() => callback(null, {
+            statusCode: 200,
+            body: "Hello, World"
+          }));
+        })
+        .catch((error) => {
+          // Handle errors when running Lighthouse
+          return chrome.kill().then(() => callback(error))
+        })
     })
-
-    // Do stuff with headless chrome
-    const page = await browser.newPage()
-    const targetUrl = 'https://davidwells.io'
-
-    // Goto page and then do stuff
-    await page.goto(targetUrl, {
-      waitUntil: ["domcontentloaded", "networkidle0"]
-    })
-
-    await page.waitForSelector('#phenomic')
-
-    theTitle = await page.title();
-
-    console.log('done on page', theTitle)
-
-  } catch (error) {
-    console.log('error', error)
-    return callback(null, {
-      statusCode: 500,
-      body: JSON.stringify({
-        error: error
-      })
-    })
-  } finally {
-    // close browser
-    if (browser !== null) {
-      await browser.close()
-    }
-  }
-
-  return callback(null, {
-    statusCode: 200,
-    body: JSON.stringify({
-      title: theTitle,
-    })
-  })
+    // Handle other errors
+    .catch(callback)
 }
+
+// exports.handler = function(event, context, callback) {
+//   callback(null, {
+//     statusCode: 200,
+//     body: "Hello, World"
+//   });
+// };
