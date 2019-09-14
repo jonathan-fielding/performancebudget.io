@@ -24,7 +24,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build && mkdir ./build/related && cp ./build/index.html ./build/related/index.html ",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prezip": "rm -rf functions-build && mkdir functions-build",
+    "zip": "cd functions/chrome && npm install && chmod -R 777 node_modules && zip -r chrome.zip *",
+    "postzip": "mv functions/chrome/chrome.zip functions-build",
+    "prebuild": "npm run zip"
   },
   "eslintConfig": {
     "extends": "react-app"
