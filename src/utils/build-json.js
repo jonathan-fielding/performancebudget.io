@@ -1,5 +1,3 @@
-import { saveAs } from 'file-saver';
-
 function sumObjectValues(obj) {
   const keys = Object.keys(obj);
   let total = 0;
@@ -14,45 +12,38 @@ function sumObjectValues(obj) {
 export default function buildJson(budget) {
   const total = sumObjectValues(budget);
 
-  const content = `[
+  return [
     {
-      "resourceSizes": [
+      resourceSizes: [
         {
-          "resourceType": "document",
-          "budget": ${budget.html}
+          resourceType: 'document',
+          budget: budget.html
         },
         {
-          "resourceType": "script",
-          "budget": ${budget.javascript}
+          resourceType: 'script',
+          budget: budget.javascript
         },
         {
-          "resourceType": "image",
-          "budget": ${budget.images}
+          resourceType: 'image',
+          budget: budget.images
         },
         {
-          "resourceType": "stylesheet",
-          "budget": ${budget.css}
+          resourceType: 'stylesheet',
+          budget: budget.css
         },
         {
-          "resourceType": "media",
-          "budget": ${budget.video}
+          resourceType: 'media',
+          budget: budget.video
         },
         {
-          "resourceType": "font",
-          "budget": ${budget.fonts}
+          resourceType: 'font',
+          budget: budget.fonts
         },
         {
-          "resourceType": "total",
-          "budget": ${total}
+          resourceType: 'total',
+          budget: total
         }
       ]
     }
-  ]`;
-  const filename = "budget.json";
-
-  const blob = new Blob([content], {
-    type: "text/plain;charset=utf-8"
-  });
-
-  saveAs(blob, filename);
+  ];
 }

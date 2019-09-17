@@ -86,7 +86,7 @@ const BudgetCustomiser: React.FC<BudgetCustomiserProps> = (props) => {
   return (
     <div className={classes.root}>
       {sliders.map((slider, index) => (
-        <div className={classes.sliderPanel}>
+        <div className={classes.sliderPanel} key={index}>
           <CustomSlider
             aria-labelledby="discrete-slider"
             valueLabelDisplay="on"

@@ -16,9 +16,11 @@ import ButtonBar from '../components/ButtonBar';
 import ErrorMessage from '../components/ErrorMessage';
 import BudgetCustomiser from '../components/BudgetCustomiser';
 import UploadButton from '../components/UploadButton';
+import LighthouseTest from '../components/LighthouseTest';
 import Helper from '../components/Helper';
 
 // Custom utils
+import downloadBudget from '../utils/download-budget';
 import buildJson from '../utils/build-json';
 
 const AVERAGE_PERCENTS = {
@@ -43,10 +45,19 @@ const Calculator: React.FC = (props) => {
   const [video, setVideo] = React.useState(0);
   const [fonts, setFonts] = React.useState(0);
   const [images, setImages] = React.useState(0);
+  const [url, setUrl] = React.useState();
+  const [loading, setLoading] = React.useState(false);
+
+  const [cssResult, setCssResult] = React.useState(0);
+  const [htmlResult, setHtmlResult] = React.useState(0);
+  const [javascriptResult, setJavascriptResult] = React.useState(0);
+  const [videoResult, setVideoResult] = React.useState(0);
+  const [fontsResult, setFontsResult] = React.useState(0);
+  const [imagesResult, setImagesResult] = React.useState(0);
 
   const steps = isDesktop ? 
-    ['Set your target', 'Configure your budget', 'Preview budget', 'Download'] :
-    ['', '', '', ''];
+    ['Set your target', 'Configure your budget', 'Preview budget', 'Test with Lighthouse', 'Download Budget'] :
+    ['', '', '', '', ''];
 
   function calculate() {
     const calculatedBudget = speed * loadtime;
@@ -72,7 +83,32 @@ const Calculator: React.FC = (props) => {
         }
         break;
       case 3:
-        buildJson({
+        const processedBudget = buildJson({
+          css,
+          html,
+          javascript,
+          video,
+          images,
+          fonts,
+        });
+
+        setLoading(true);
+        
+        fetch('http://performance-budget-api.jonthanfielding.com', {
+          method: 'post',
+          body: JSON.stringify({
+              url,
+              budget: processedBudget,
+          }),
+          headers: { 'Content-Type': 'application/json' },
+        }).then(r => r.json()).then((lighthouseResult) => {
+          setLoading(false);
+          processLighthouseResponse(lighthouseResult.results);
+        });
+
+        return;
+      case 4:
+        downloadBudget({
           css,
           html,
           javascript,
@@ -85,6 +121,26 @@ const Calculator: React.FC = (props) => {
         break;
     }
 
+    window.scrollTo(0,0);
+    setActiveStep(prevActiveStep => prevActiveStep + 1);
+  }
+
+  function pick(arr: any, key: string) {
+    return arr.filter((item: any) => {
+      return item.resourceType === key
+    })[0].size;
+  }
+
+  function processLighthouseResponse(arr: any) {
+      setCssResult(pick(arr, 'stylesheet'));
+      setHtmlResult(pick(arr, 'document'));
+      setJavascriptResult(pick(arr, 'script'));
+      setVideoResult(pick(arr, 'media'));
+      setImagesResult(pick(arr, 'font'));
+      setFontsResult(pick(arr, 'stylesheet'));
+  }
+
+  function handleSkip() {
     window.scrollTo(0,0);
     setActiveStep(prevActiveStep => prevActiveStep + 1);
   }
@@ -104,6 +160,8 @@ const Calculator: React.FC = (props) => {
         return step3();
       case 3:
         return step4();
+      case 4:
+        return step5();
       default:
         return 'Unknown step';
     }
@@ -203,6 +261,36 @@ const Calculator: React.FC = (props) => {
   function step4() {
     return (
       <Helper type="alignCenter">
+        <h2>Test your budget (Beta)</h2>
+
+        <p>Having defined your budget you can now test your site to see how it measures up.</p>
+
+        <LighthouseTest url={url} setUrl={setUrl} />
+
+        <AssetTable
+          html={html}
+          css={css}
+          javascript={javascript}
+          images={images}
+          video={video}
+          fonts={fonts}
+          cssResult={cssResult}
+          htmlResult={htmlResult}
+          javascriptResult={javascriptResult}
+          videoResult={videoResult}
+          fontsResult={fontsResult}
+          imagesResult={imagesResult}
+          hasResults={true}
+        />
+
+        {buttons()}
+      </Helper>
+    )
+  }
+
+  function step5() {
+    return (
+      <Helper type="alignCenter">
         <h2>Download lighthouse budget config</h2>
 
         <p>This performance budget calculator allows you to export the budget you have built as a lighthouse config file</p>
@@ -218,6 +306,7 @@ const Calculator: React.FC = (props) => {
       'Calculate',
       'Next',
       'Next',
+      'Test',
       'Download',
     ];
 
@@ -226,8 +315,11 @@ const Calculator: React.FC = (props) => {
         <ButtonBar
           handleBack={handleBack}
           handleNext={handleNext}
+          handleSkip={handleSkip}
           nextText={nextTexts[activeStep]}
+          showSkip={activeStep === 3}
           showBack={activeStep !== 0}
+          loading={loading}
         />
       </div>
     )
