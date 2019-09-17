@@ -97,7 +97,7 @@ const Calculator: React.FC = (props) => {
         });
         setLoading(true);
         
-        fetch('//performance-budget-api.jonthanfielding.com', {
+        fetch('https://performance-budget-api.jonthanfielding.com', {
           method: 'post',
           body: JSON.stringify({
               url,
@@ -106,7 +106,6 @@ const Calculator: React.FC = (props) => {
           headers: { 'Content-Type': 'application/json' },
         }).then(r => r.json()).then((lighthouseResult) => {
           setLoading(false);
-          setHasResult(true);
           processLighthouseResponse(lighthouseResult.results);
         });
 
@@ -142,6 +141,7 @@ const Calculator: React.FC = (props) => {
       setVideoResult(pick(arr, 'media'));
       setImagesResult(pick(arr, 'font'));
       setFontsResult(pick(arr, 'stylesheet'));
+      setHasResult(true);
   }
 
   function handleSkip() {
