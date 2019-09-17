@@ -54,6 +54,7 @@ const Calculator: React.FC = (props) => {
   const [videoResult, setVideoResult] = React.useState(0);
   const [fontsResult, setFontsResult] = React.useState(0);
   const [imagesResult, setImagesResult] = React.useState(0);
+  const [hasResult, setHasResult] = React.useState(false);
 
   const steps = isDesktop ? 
     ['Set your target', 'Configure your budget', 'Preview budget', 'Test with Lighthouse', 'Download Budget'] :
@@ -71,6 +72,9 @@ const Calculator: React.FC = (props) => {
   }
 
   function handleNext() {
+    // Clear lighthouse result
+    setHasResult(false);
+
     // Special next handling
     switch (activeStep) {
       case 0:
@@ -91,7 +95,6 @@ const Calculator: React.FC = (props) => {
           images,
           fonts,
         });
-
         setLoading(true);
         
         fetch('//performance-budget-api.jonthanfielding.com', {
@@ -103,6 +106,7 @@ const Calculator: React.FC = (props) => {
           headers: { 'Content-Type': 'application/json' },
         }).then(r => r.json()).then((lighthouseResult) => {
           setLoading(false);
+          setHasResult(true);
           processLighthouseResponse(lighthouseResult.results);
         });
 
@@ -267,7 +271,7 @@ const Calculator: React.FC = (props) => {
 
         <LighthouseTest url={url} setUrl={setUrl} />
 
-        <AssetTable
+        {hasResult && <AssetTable
           html={html}
           css={css}
           javascript={javascript}
@@ -281,7 +285,7 @@ const Calculator: React.FC = (props) => {
           fontsResult={fontsResult}
           imagesResult={imagesResult}
           hasResults={true}
-        />
+        />}
 
         {buttons()}
       </Helper>
