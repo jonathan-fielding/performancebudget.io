@@ -94,7 +94,7 @@ const Calculator: React.FC = (props) => {
 
         setLoading(true);
         
-        fetch('http://performance-budget-api.jonthanfielding.com', {
+        fetch('//performance-budget-api.jonthanfielding.com', {
           method: 'post',
           body: JSON.stringify({
               url,
