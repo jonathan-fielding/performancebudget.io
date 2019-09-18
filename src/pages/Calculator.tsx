@@ -47,6 +47,7 @@ const Calculator: React.FC = (props) => {
   const [images, setImages] = React.useState(0);
   const [url, setUrl] = React.useState();
   const [loading, setLoading] = React.useState(false);
+  const [urlError, setUrlError] = React.useState(false);
 
   const [cssResult, setCssResult] = React.useState(0);
   const [htmlResult, setHtmlResult] = React.useState(0);
@@ -71,6 +72,12 @@ const Calculator: React.FC = (props) => {
     setVideo(Math.floor((calculatedBudget / 100) * AVERAGE_PERCENTS.video));
   }
 
+  function validateUrl() {
+    // eslint-disable-next-line
+    const urlRegex = new RegExp(/(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/);
+    return urlRegex.test(url);
+  }
+
   function handleNext() {
     // Clear lighthouse result
     setHasResult(false);
@@ -87,6 +94,13 @@ const Calculator: React.FC = (props) => {
         }
         break;
       case 3:
+        if (!validateUrl()) {
+          setUrlError(true);
+          return;
+        } else {
+          setUrlError(false);
+        }
+
         const processedBudget = buildJson({
           css,
           html,
@@ -95,6 +109,7 @@ const Calculator: React.FC = (props) => {
           images,
           fonts,
         });
+
         setLoading(true);
         
         fetch('https://performance-budget-api.jonthanfielding.com', {
@@ -270,6 +285,8 @@ const Calculator: React.FC = (props) => {
         <p>Having defined your budget you can now test your site to see how it measures up.</p>
 
         <LighthouseTest url={url} setUrl={setUrl} />
+
+        {urlError && <ErrorMessage>Please enter a valid URL</ErrorMessage>}
 
         {hasResult && <AssetTable
           html={html}
