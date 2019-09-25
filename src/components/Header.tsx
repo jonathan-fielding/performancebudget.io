@@ -4,6 +4,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles(theme => ({
+  beta: {
+    padding: '10px',
+    background: '#ddd',
+    textAlign: 'center',
+  },
   globalHeader: {
     minHeight: '200px',
     textAlign: 'center',
@@ -45,21 +50,26 @@ const Header: React.FC = (props) => {
   const matches = useMediaQuery('(min-width:850px)');
 
   return (
-    <header className={`${classes.globalHeader} ${matches ? classes.globalHeaderDesktop : ''}`}>
-      <div>
-        <h1 className={matches ? classes.globalHeaderTitleDesktop : classes.globalHeaderTitleMobile}>Performance Budget Calculator</h1>
-        <nav className='global-header__nav'>
-          <ul className={classes.globalHeaderNavList}>
-            <li className={classes.globalHeaderNavItem}>
-              <NavLink to='/' exact activeClassName='global-header__nav-item--active'>Calculator</NavLink>
-            </li>
-            <li className={classes.globalHeaderNavItem}>
-              <NavLink to='/related/' activeClassName='global-header__nav-item--active'>Related reading</NavLink>
-            </li>
-          </ul>
-        </nav>
+    <div>
+      <div className={classes.beta}>
+        BETA - This version is the internal build used for trying new things, it uses beta services which could be broken/out of sync with this version
       </div>
+      <header className={`${classes.globalHeader} ${matches ? classes.globalHeaderDesktop : ''}`}>
+        <div>
+          <h1 className={matches ? classes.globalHeaderTitleDesktop : classes.globalHeaderTitleMobile}>Performance Budget Calculator</h1>
+          <nav className='global-header__nav'>
+            <ul className={classes.globalHeaderNavList}>
+              <li className={classes.globalHeaderNavItem}>
+                <NavLink to='/' exact activeClassName='global-header__nav-item--active'>Calculator</NavLink>
+              </li>
+              <li className={classes.globalHeaderNavItem}>
+                <NavLink to='/related/' activeClassName='global-header__nav-item--active'>Related reading</NavLink>
+              </li>
+            </ul>
+          </nav>
+        </div>
     </header>
+    </div>
   );
 }
 
