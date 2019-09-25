@@ -33,6 +33,7 @@ const AVERAGE_PERCENTS = {
 };
 
 const Calculator: React.FC = (props) => {
+  let jobKey = null;
   const isDesktop = useMediaQuery('(min-width:750px)');
   const [activeStep, setActiveStep] = React.useState(0);
   const [step1Error, setStep1Error] = React.useState(false);
@@ -112,7 +113,7 @@ const Calculator: React.FC = (props) => {
 
         setLoading(true);
         
-        fetch('https://performance-budget-api.jonthanfielding.com', {
+        fetch('http://localhost:4000/job', {
           method: 'post',
           body: JSON.stringify({
               url,
@@ -120,8 +121,10 @@ const Calculator: React.FC = (props) => {
           }),
           headers: { 'Content-Type': 'application/json' },
         }).then(r => r.json()).then((lighthouseResult) => {
-          setLoading(false);
-          processLighthouseResponse(lighthouseResult.results);
+          // setLoading(false);
+          jobKey = lighthouseResult.jobId;
+          //
+          // processLighthouseResponse(lighthouseResult.results);
         });
 
         return;
