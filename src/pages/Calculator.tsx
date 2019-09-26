@@ -114,7 +114,7 @@ const Calculator: React.FC = (props) => {
 
         setLoading(true);
         
-        fetch('http://localhost:4000/job', {
+        fetch('https://performance-budget-api.jonthanfielding.com/job', {
           method: 'post',
           body: JSON.stringify({
               url,
@@ -146,7 +146,7 @@ const Calculator: React.FC = (props) => {
   }
 
   function pollLighthouse() {
-    fetch(`http://localhost:4000/job/${jobKey}`).then(r => r.json()).then((lighthouseResult) => {
+    fetch(`https://performance-budget-api.jonthanfielding.com/job/${jobKey}`).then(r => r.json()).then((lighthouseResult) => {
       if (lighthouseResult.javascript) {
         setLoading(false);
         processLighthouseResponse(lighthouseResult)
