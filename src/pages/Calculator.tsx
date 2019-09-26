@@ -33,6 +33,7 @@ const AVERAGE_PERCENTS = {
 };
 
 const Calculator: React.FC = (props) => {
+  let jobKey: string = '';
   const isDesktop = useMediaQuery('(min-width:750px)');
   const [activeStep, setActiveStep] = React.useState(0);
   const [step1Error, setStep1Error] = React.useState(false);
@@ -56,6 +57,7 @@ const Calculator: React.FC = (props) => {
   const [fontsResult, setFontsResult] = React.useState(0);
   const [imagesResult, setImagesResult] = React.useState(0);
   const [hasResult, setHasResult] = React.useState(false);
+  const [queuePosition, setQueuePosition] = React.useState();
 
   const steps = isDesktop ? 
     ['Set your target', 'Configure your budget', 'Preview budget', 'Test with Lighthouse', 'Download Budget'] :
@@ -112,7 +114,7 @@ const Calculator: React.FC = (props) => {
 
         setLoading(true);
         
-        fetch('https://performance-budget-api.jonthanfielding.com', {
+        fetch('https://performance-budget-api.jonthanfielding.com/job', {
           method: 'post',
           body: JSON.stringify({
               url,
@@ -120,8 +122,8 @@ const Calculator: React.FC = (props) => {
           }),
           headers: { 'Content-Type': 'application/json' },
         }).then(r => r.json()).then((lighthouseResult) => {
-          setLoading(false);
-          processLighthouseResponse(lighthouseResult.results);
+          jobKey = lighthouseResult.jobId;
+          pollLighthouse();
         });
 
         return;
@@ -143,19 +145,30 @@ const Calculator: React.FC = (props) => {
     setActiveStep(prevActiveStep => prevActiveStep + 1);
   }
 
-  function pick(arr: any, key: string) {
-    return arr.filter((item: any) => {
-      return item.resourceType === key
-    })[0].size;
+  function pollLighthouse() {
+    fetch(`https://performance-budget-api.jonthanfielding.com/job/${jobKey}`).then(r => r.json()).then((lighthouseResult) => {
+      if (lighthouseResult.javascript) {
+        setLoading(false);
+        processLighthouseResponse(lighthouseResult)
+      } else {
+        if (lighthouseResult.queuePosition) {
+          setQueuePosition(lighthouseResult.queuePosition);
+        } else {
+          setQueuePosition(0);
+        }
+
+        setTimeout(pollLighthouse, 1000);
+      }
+    });
   }
 
-  function processLighthouseResponse(arr: any) {
-      setCssResult(pick(arr, 'stylesheet'));
-      setHtmlResult(pick(arr, 'document'));
-      setJavascriptResult(pick(arr, 'script'));
-      setVideoResult(pick(arr, 'media'));
-      setImagesResult(pick(arr, 'font'));
-      setFontsResult(pick(arr, 'stylesheet'));
+  function processLighthouseResponse(obj: any) {
+      setCssResult(obj.css / 1000);
+      setHtmlResult(obj.html / 1000);
+      setJavascriptResult(obj.javascript / 1000);
+      setVideoResult(obj.video / 1000);
+      setImagesResult(obj.images / 1000);
+      setFontsResult(obj.fonts / 1000);
       setHasResult(true);
   }
 
@@ -285,6 +298,14 @@ const Calculator: React.FC = (props) => {
         <p>Having defined your budget you can now test your site to see how it measures up.</p>
 
         <LighthouseTest url={url} setUrl={setUrl} />
+
+        {!hasResult && queuePosition === 0 && <p>
+          Your test is currently being run, this normally takes a few seconds.
+        </p>}
+
+        {queuePosition > 0 && <p>
+          Currently you are in a queue, your position is {queuePosition}
+        </p>}
 
         {urlError && <ErrorMessage>Please enter a valid URL</ErrorMessage>}
 
