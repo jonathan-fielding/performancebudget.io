@@ -48,12 +48,13 @@ const useStyles = makeStyles(theme => ({
 const Header: React.FC = (props) => {
   const classes = useStyles(props);
   const matches = useMediaQuery('(min-width:850px)');
+  const visibleBetaHeader: boolean = window.location.host === 'beta.performancebudget.io';
 
   return (
     <div>
-      <div className={classes.beta}>
+      {visibleBetaHeader && <div className={classes.beta}>
         BETA - This version is the internal build used for trying new things, it uses beta services which could be broken/out of sync with this version
-      </div>
+      </div>}
       <header className={`${classes.globalHeader} ${matches ? classes.globalHeaderDesktop : ''}`}>
         <div>
           <h1 className={matches ? classes.globalHeaderTitleDesktop : classes.globalHeaderTitleMobile}>Performance Budget Calculator</h1>
