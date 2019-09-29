@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { flexbox } from '@material-ui/system';
 
 const useStyles = makeStyles(theme => ({
   beta: {
@@ -22,12 +23,19 @@ const useStyles = makeStyles(theme => ({
     minHeight: '200px',
     textAlign: 'center',
     backgroundColor: '#0275d8',
+    display: 'flex',
     overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: '20px',
+    flexDirection: 'column',
+  },
+  globalHeaderContent: {
+    flexGrow: 1,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingBottom: '10px',
-    marginBottom: '20px',
+    flexDirection: 'column',
   },
   globalHeaderDesktop: {
     minHeight: '30vh',
@@ -36,6 +44,7 @@ const useStyles = makeStyles(theme => ({
   globalHeaderTitleMobile: {
     color: '#fff',
     fontSize: '2rem',
+    marginBottom: '0',
   },
   globalHeaderTitleDesktop: {
     color: '#fff',
@@ -53,6 +62,11 @@ const useStyles = makeStyles(theme => ({
       color: '#fff',
     }
   },
+  nav: {
+    overflow: 'hidden',
+    background: '#0260b0',
+    width: '100%',
+  }
 }));
 
 const Header: React.FC = (props) => {
@@ -66,25 +80,25 @@ const Header: React.FC = (props) => {
         BETA - This version is the internal build used for trying new things, it uses beta services which could be broken/out of sync with this version
       </div>}
       <header className={`${classes.globalHeader} ${matches ? classes.globalHeaderDesktop : ''}`}>
-        <div>
+        <div className={classes.globalHeaderContent}>
           <h1 className={matches ? classes.globalHeaderTitleDesktop : classes.globalHeaderTitleMobile}>Performance Budget Calculator</h1> 
           <p className={classes.perfBadger}>
             <span>by </span>
             <a href="https://www.perfbadger.com"><img src="/logo.png" alt="PerfBadger" width="200" height="40" className={classes.perfBadgerLogo} /></a>
           </p>
-
-          <nav className='global-header__nav'>
-            <ul className={classes.globalHeaderNavList}>
-              <li className={classes.globalHeaderNavItem}>
-                <NavLink to='/' exact activeClassName='global-header__nav-item--active'>Calculator</NavLink>
-              </li>
-              <li className={classes.globalHeaderNavItem}>
-                <NavLink to='/related/' activeClassName='global-header__nav-item--active'>Related reading</NavLink>
-              </li>
-            </ul>
-          </nav>
         </div>
-    </header>
+
+        <nav className={classes.nav}>
+          <ul className={classes.globalHeaderNavList}>
+            <li className={classes.globalHeaderNavItem}>
+              <NavLink to='/' exact activeClassName='global-header__nav-item--active'>Calculator</NavLink>
+            </li>
+            <li className={classes.globalHeaderNavItem}>
+              <NavLink to='/related/' activeClassName='global-header__nav-item--active'>Related reading</NavLink>
+            </li>
+          </ul>
+        </nav>
+      </header>
     </div>
   );
 }
