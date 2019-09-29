@@ -9,6 +9,15 @@ const useStyles = makeStyles(theme => ({
     background: '#ddd',
     textAlign: 'center',
   },
+  perfBadger: {
+    lineHeight: '40px',
+    display: 'flex',
+    color: '#fff',
+    justifyContent: 'center',
+  },
+  perfBadgerLogo: {
+    paddingLeft: '10px',
+  },
   globalHeader: {
     minHeight: '200px',
     textAlign: 'center',
@@ -31,6 +40,7 @@ const useStyles = makeStyles(theme => ({
   globalHeaderTitleDesktop: {
     color: '#fff',
     fontSize: '2.5rem',
+    marginBottom: '0',
   },
   globalHeaderNavList: {
     listStyle: 'none',
@@ -57,7 +67,12 @@ const Header: React.FC = (props) => {
       </div>}
       <header className={`${classes.globalHeader} ${matches ? classes.globalHeaderDesktop : ''}`}>
         <div>
-          <h1 className={matches ? classes.globalHeaderTitleDesktop : classes.globalHeaderTitleMobile}>Performance Budget Calculator</h1>
+          <h1 className={matches ? classes.globalHeaderTitleDesktop : classes.globalHeaderTitleMobile}>Performance Budget Calculator</h1> 
+          <p className={classes.perfBadger}>
+            <span>by </span>
+            <a href="https://www.perfbadger.com"><img src="/logo.png" alt="PerfBadger" width="200" height="40" className={classes.perfBadgerLogo} /></a>
+          </p>
+
           <nav className='global-header__nav'>
             <ul className={classes.globalHeaderNavList}>
               <li className={classes.globalHeaderNavItem}>
