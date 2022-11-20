@@ -1,42 +1,34 @@
 {
-  "name": "performance-budget-io-typed",
+  "name": "performancebudget.io",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@material-ui/core": "^4.4.0",
-    "@material-ui/icons": "^4.4.1",
-    "@sentry/browser": "^5.10.2",
-    "@types/jest": "24.0.18",
-    "@types/node": "12.7.4",
-    "@types/react": "16.9.2",
-    "@types/react-dom": "16.9.0",
-    "@types/react-router-dom": "^4.3.5",
-    "file-saver": "^2.0.2",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "3.1.1",
-    "typescript": "3.6.2"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build && mkdir ./build/related && cp ./build/index.html ./build/related/index.html ",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "dependencies": {
+    "@headlessui/react": "^1.7.3",
+    "@heroicons/react": "^2.0.12",
+    "@reduxjs/toolkit": "^1.8.6",
+    "@tailwindcss/forms": "^0.5.3",
+    "daisyui": "^2.31.0",
+    "next": "12.3.1",
+    "next-redux-wrapper": "^8.0.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-redux": "^8.0.4"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@types/node": "18.8.4",
+    "@types/react": "18.0.21",
+    "@types/react-dom": "18.0.6",
+    "autoprefixer": "^10.4.12",
+    "eslint": "8.25.0",
+    "eslint-config-next": "12.3.1",
+    "postcss": "^8.4.17",
+    "tailwindcss": "^3.1.8",
+    "typescript": "4.8.4"
   }
 }
