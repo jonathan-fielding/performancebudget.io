@@ -89,8 +89,8 @@ const people: ConnectionSpeed[] = [
   },
 ]
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(' ');
 }
 
 export default function ConnectionDropdown() {
