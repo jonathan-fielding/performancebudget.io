@@ -13,8 +13,13 @@ export default function Stepper() {
       <ul className="steps lg:steps-horizontal">
         {steps.map((stepItem, index) => {
           return (
-            <li className={index + 1 === step ? 'step step-primary': 'step'}><span className="hidden sm:block">{stepItem}</span></li>
-          )
+            <li
+              key={index}
+              className={index + 1 === step ? 'step step-primary' : 'step'}
+            >
+              <span className="hidden sm:block">{stepItem}</span>
+            </li>
+          );
         })}
       </ul>
     </div>

@@ -20,17 +20,30 @@ export default function BudgetConfiguration() {
   const fields = defaultFields[budgetType];
 
   return (
-    <div className='flex flex-col items-center'>
-      <h2 className="pb-4 text-gray-700 font-bold text-xl sm:text-2xl">Configure your budget</h2>
+    <div className="flex flex-col items-center">
+      <h2 className="pb-4 text-gray-700 font-bold text-xl sm:text-2xl">
+        Configure your budget
+      </h2>
 
       <div className="grid sm:grid-cols-2 gap-8 pb-8">
-        {fields.map(({name, suggested, min, max, step = 1}) => <div>
-          <label htmlFor={name} className="mb-2 block">{name}</label>
-          <input name={name} type="range" min={min} max={max} step={step}  className="range range-md w-72 range-primary" />
-        </div>)}
+        {fields.map(({ name, suggested, min, max, step = 1 }, index) => (
+          <div key={index}>
+            <label htmlFor={name} className="mb-2 block">
+              {name}
+            </label>
+            <input
+              name={name}
+              type="range"
+              min={min}
+              max={max}
+              step={step}
+              className="range range-md w-72 range-primary"
+            />
+          </div>
+        ))}
       </div>
 
       <ButtonBar />
     </div>
-  )
+  );
 }
