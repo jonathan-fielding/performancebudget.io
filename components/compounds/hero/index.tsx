@@ -10,8 +10,8 @@ const navigation = [
 interface HeroProps {
   title1: string;
   title2: string;
-  buttonLink: string;
-  buttonTitle: string;
+  buttonLink?: string;
+  buttonTitle?: string;
 }
 
 export default function Hero({

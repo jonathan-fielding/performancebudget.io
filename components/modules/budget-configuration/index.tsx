@@ -3,21 +3,35 @@ import { selectBudgetType, setBudgetType, setStep } from "../../../store/budgetS
 import { useDispatch, useSelector } from "react-redux";
 import ButtonBar from '../../compounds/button-bar';
 
+interface BudgetLineItem {
+  name: string;
+  suggested: number;
+  min: number;
+  max: number;
+  step?: number;
+}
+
 // 'html', 'css', 'javascript', 'images', 'video', 'fonts'
-const defaultFields = {
+const defaultFields: any = {
   asset: [
-    { name: 'lcp', suggested: 2500, min: 0, max: 5000 }, { name: 'fid', suggested: 100, min: 0, max: 500 }, { name: 'cls', min: 0, max: 1}, { name: 'inp' }
+    { name: 'lcp', suggested: 2500, min: 0, max: 5000 },
+    { name: 'fid', suggested: 100, min: 0, max: 500 },
+    { name: 'cls', min: 0, max: 1 },
+    { name: 'inp' },
   ],
   cwv: [
-   { name: 'lcp', suggested: 2500, min: 0, max: 5000 }, { name: 'fid', suggested: 100, min: 0, max: 500 }, { name: 'cls', min: 0, max: 1, step:0.01 }, { name: 'inp', suggested: 200, min: 0, max: 500  }
-  ]
-}
+    { name: 'lcp', suggested: 2500, min: 0, max: 5000 },
+    { name: 'fid', suggested: 100, min: 0, max: 500 },
+    { name: 'cls', min: 0, max: 1, step: 0.01 },
+    { name: 'inp', suggested: 200, min: 0, max: 500 },
+  ],
+};
 
 export default function BudgetConfiguration() {
   const budgetType = useSelector(selectBudgetType) || 'asset';
   const dispatch = useDispatch();
 
-  const fields = defaultFields[budgetType];
+  const fields: BudgetLineItem[] = defaultFields[budgetType];
 
   return (
     <div className="flex flex-col items-center">
@@ -26,7 +40,7 @@ export default function BudgetConfiguration() {
       </h2>
 
       <div className="grid sm:grid-cols-2 gap-8 pb-8">
-        {fields.map(({ name, suggested, min, max, step = 1 }, index) => (
+        {fields.map(({ name, suggested, min, max, step = 1 }: any, index) => (
           <div key={index}>
             <label htmlFor={name} className="mb-2 block">
               {name}

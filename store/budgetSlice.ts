@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { AppState } from ".";
-import { HYDRATE } from "next-redux-wrapper";
+import { createSlice } from '@reduxjs/toolkit';
+import { AppState } from '.';
+import { HYDRATE } from 'next-redux-wrapper';
 
 enum BudgetTypes {
   cwv = 'cwv',
@@ -18,47 +18,47 @@ export interface BudgetState {
 const initialState: BudgetState = {
   budgetType: null,
   step: 1,
-  connectionSpeed: 0
+  connectionSpeed: 0,
 };
 
 // Actual Slice
 export const budgetSlice = createSlice({
-  name: "budget",
+  name: 'budget',
   initialState,
   reducers: {
-
     // Action to set the budget type
-    setBudgetType(state, action) {
+    setBudgetType(state: BudgetState, action) {
       state.budgetType = action.payload;
     },
 
     // Action to set the budget type
-    setStep(state, action) {
+    setStep(state: BudgetState, action) {
       state.step = action.payload;
     },
 
     // Action to set the budget type
-    setConnectionSpeed(state, action) {
+    setConnectionSpeed(state: BudgetState, action) {
       state.connectionSpeed = action.payload;
     },
 
     // Special reducer for hydrating the state. Special case for next-redux-wrapper
     extraReducers: {
-      [HYDRATE]: (state, action) => {
+      [HYDRATE]: (state: any, action: any) => {
         return {
           ...state,
           ...action.payload.budget,
         };
       },
     },
-
   },
 });
 
-export const { setBudgetType, setStep, setConnectionSpeed } = budgetSlice.actions;
+export const { setBudgetType, setStep, setConnectionSpeed } =
+  budgetSlice.actions;
 
 export const selectBudgetType = (state: AppState) => state.budget.budgetType;
 export const selectStep = (state: AppState) => state.budget.step;
-export const selectConnectionSpeed = (state: AppState) => state.budget.connectionSpeed;
+export const selectConnectionSpeed = (state: AppState) =>
+  state.budget.connectionSpeed;
 
 export default budgetSlice.reducer;
