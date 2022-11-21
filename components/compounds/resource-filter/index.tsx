@@ -41,7 +41,7 @@ export default function ResourceFilter() {
     (filterValue) => filterValue.value === selectedValue
   );
   const dispatch = useDispatch();
-  const setSelected = ({ value }: { value: number }) => {
+  const setSelected = ({ value }: FilterValues) => {
     dispatch(setFilterValue(value));
   };
 
