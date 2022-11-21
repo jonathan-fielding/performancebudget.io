@@ -39,16 +39,17 @@ export const budgetSlice = createSlice({
     // Action to set the budget type
     setConnectionSpeed(state: BudgetState, action) {
       state.connectionSpeed = action.payload;
+      return state;
     },
-
-    // Special reducer for hydrating the state. Special case for next-redux-wrapper
-    extraReducers: {
-      [HYDRATE]: (state: any, action: any) => {
-        return {
-          ...state,
-          ...action.payload.budget,
-        };
-      },
+  },
+  
+  // Special reducer for hydrating the state. Special case for next-redux-wrapper
+  extraReducers: {
+    [HYDRATE]: (state: any, action: any) => {
+      return {
+        ...state,
+        ...action.payload.budget,
+      };
     },
   },
 });
