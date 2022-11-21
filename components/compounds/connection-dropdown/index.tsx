@@ -97,8 +97,8 @@ export default function ConnectionDropdown() {
   const selectedValue = useSelector(selectConnectionSpeed);
   const selected = people.find((person) => person.value === selectedValue)
   const dispatch = useDispatch();
-  const setSelected = (e: any) => {
-    dispatch(setConnectionSpeed(e.target.value));
+  const setSelected = ({ value }: { value: number }) => {
+    dispatch(setConnectionSpeed(value));
   };
 
   return (
