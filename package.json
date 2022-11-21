@@ -14,6 +14,7 @@
     "@reduxjs/toolkit": "^1.9.0",
     "@tailwindcss/forms": "^0.5.3",
     "daisyui": "^2.31.0",
+    "just-clone": "^6.1.1",
     "next": "12.3.1",
     "next-redux-wrapper": "^8.0.0",
     "react": "18.2.0",

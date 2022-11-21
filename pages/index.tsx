@@ -19,7 +19,15 @@ const Home: NextPage = () => {
   const budgetType = useSelector(selectBudgetType);
   return (
     <>
-      <Hero title1="Set targets for your" title2="websites performance" buttonLink="#get-started" buttonTitle="Get Started" />
+      <Head>
+        <title>Performance Budget Calculator</title>
+      </Head>
+      <Hero
+        title1="Set targets for your"
+        title2="websites performance"
+        buttonLink="#get-started"
+        buttonTitle="Get Started"
+      />
       <div className="bg-slate-200 p-14 text-gray-600">
         <div className="mx-auto max-w-7xl">
           <Stepper />
@@ -31,7 +39,7 @@ const Home: NextPage = () => {
       </div>
       <Footer />
     </>
-  )
+  );
 }
 
 export default Home
