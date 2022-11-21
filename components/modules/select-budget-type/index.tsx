@@ -37,18 +37,23 @@ export default function BudgetType() {
         Choose the type of metrics you want to target
       </h2>
       <div className="grid sm:grid-cols-2 gap-8 pb-8">
-        {budgetTypes.map(({ title, description, id }, index) => (
+        {budgetTypes.map(({ title, description, id }) => (
           <BudgetCard
             title={title}
-            key={index}
+            key={id}
             description={description}
             onBudgetClick={() => dispatch(setBudgetType(id))}
             selected={id === budgetType}
           />
         ))}
       </div>
-      {budgetType === BudgetTypes.asset && <div className="pb-8">hello</div>}
-      {(budgetType === BudgetTypes.cwv || budgetType === BudgetTypes.asset) && (
+      {budgetType === BudgetTypes.asset && (
+        <div className=" pb-8">
+          <ConnectionDropdown />
+        </div>
+      )}
+      {(budgetType === BudgetTypes.cwv ||
+        (budgetType === BudgetTypes.asset && connectionSpeed !== 0)) && (
         <ButtonBar />
       )}
     </div>
