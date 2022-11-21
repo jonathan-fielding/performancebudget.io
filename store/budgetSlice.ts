@@ -67,12 +67,10 @@ export const budgetSlice = createSlice({
           });
           break;
         case BudgetTypes.asset:
-          state.budgetValues = clone(ASSET_BUDGET_LINE_ITEMS).map(
-            (lineItem) => {
-              lineItem.userValue = lineItem.suggested;
-              return lineItem;
-            }
-          );
+          state.budgetValues = clone(CWV_BUDGET_LINE_ITEMS).map((lineItem) => {
+            lineItem.userValue = lineItem.suggested;
+            return lineItem;
+          });
           console.log(state);
           break;
       }
