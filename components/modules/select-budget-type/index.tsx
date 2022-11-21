@@ -10,6 +10,7 @@ import {
 } from '../../../store/budgetSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import ButtonBar from '../../compounds/button-bar';
+import BudgetTimeInput from '../../compounds/budget-time-input';
 
 export default function BudgetType() {
   const connectionSpeed = useSelector(selectConnectionSpeed);
@@ -50,6 +51,11 @@ export default function BudgetType() {
       {budgetType === BudgetTypes.asset && (
         <div className=" pb-8">
           <ConnectionDropdown />
+        </div>
+      )}
+      {budgetType === BudgetTypes.asset && connectionSpeed !== 0 && (
+        <div className="pb-8">
+          <BudgetTimeInput />
         </div>
       )}
       {(budgetType === BudgetTypes.cwv ||
