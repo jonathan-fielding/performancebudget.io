@@ -15,79 +15,59 @@ const people: ConnectionSpeed[] = [
   {
     id: 0,
     name: 'Select a speed which reflects your websites audience',
-    value: 0
+    value: 0,
   },
   {
     id: 1,
     name: 'Mobile 2G - Slow (35 Kbps)',
     value: 4.375,
-    image:
-      'https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
   },
   {
     id: 2,
     name: '56K Dial-Up (49Kbps)',
     value: 7,
-    image:
-      'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
   },
   {
     id: 3,
     name: 'Mobile 2G - Fast (150 Kbps)',
     value: 18.75,
-    image:
-      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80',
   },
   {
     id: 4,
     name: 'Mobile Edge (240 Kbps)',
     value: 30,
-    image:
-      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
   },
   {
     id: 5,
     name: 'Mobile 3G - Slow (780 Kbps)',
     value: 96,
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
   },
   {
     id: 6,
     name: 'DSL (1.5Mbps)',
     value: 187.5,
-    image:
-      'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
   },
   {
     id: 7,
     name: 'Mobile 3G - Fast (1.6 Mbps)',
     value: 200,
-    image:
-      'https://images.unsplash.com/photo-1568409938619-12e139227838?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
   },
   {
     id: 8,
     name: 'Cable (5Mbps)',
     value: 625,
-    image:
-      'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
   },
   {
     id: 9,
     name: 'FIOS (20Mbps)',
     value: 2500,
-    image:
-      'https://images.unsplash.com/photo-1584486520270-19eca1efcce5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
   },
   {
     id: 10,
     name: 'Custom',
     value: 999999999999,
-    image:
-      'https://images.unsplash.com/photo-1584486520270-19eca1efcce5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
   },
-]
+];
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
