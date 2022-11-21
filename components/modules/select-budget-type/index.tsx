@@ -42,7 +42,7 @@ export default function BudgetType() {
             title={title}
             key={id}
             description={description}
-            onBudgetClick={() => console.log(id)}
+            onBudgetClick={() => dispatch(setBudgetType(id))}
             selected={id === budgetType}
           />
         ))}
