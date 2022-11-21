@@ -3,7 +3,7 @@ import { AppState } from '.';
 import { HYDRATE } from 'next-redux-wrapper';
 import clone from 'just-clone';
 
-enum BudgetTypes {
+export enum BudgetTypes {
   cwv = 'cwv',
   asset = 'asset',
 }

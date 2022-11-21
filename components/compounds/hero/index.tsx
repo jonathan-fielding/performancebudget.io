@@ -42,13 +42,22 @@ export default function Hero({
               >
                 <div className="flex flex-shrink-0 flex-grow items-center lg:flex-grow-0">
                   <div className="flex w-full items-center justify-between md:w-auto">
-                    <a href="#">
+                    <a href="/">
                       <span className="sr-only">Your Company</span>
-                      <img
-                        alt="Your Company"
-                        className="h-8 w-auto sm:h-10"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                      />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="#4F46E5"
+                        className="w-8 h-8"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"
+                        />
+                      </svg>
                     </a>
                     <div className="-mr-2 flex items-center md:hidden">
                       <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -88,11 +97,20 @@ export default function Hero({
                 <div className="overflow-hidden rounded-lg bg-white shadow-md ring-1 ring-black ring-opacity-5">
                   <div className="flex items-center justify-between px-5 pt-4">
                     <div>
-                      <img
-                        className="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                        alt=""
-                      />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="#4F46E5"
+                        className="w-8 h-8"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"
+                        />
+                      </svg>
                     </div>
                     <div className="-mr-2">
                       <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
