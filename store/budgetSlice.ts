@@ -56,7 +56,6 @@ export const budgetSlice = createSlice({
   reducers: {
     // Action to set the budget type, resetting the values from constants
     setBudgetType(state: BudgetState, action) {
-      console.log(action.payload);
       state.budgetType = action.payload;
 
       switch (action.payload) {
@@ -73,6 +72,7 @@ export const budgetSlice = createSlice({
               return lineItem;
             }
           );
+          console.log(state);
           break;
       }
     },
