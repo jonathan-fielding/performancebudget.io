@@ -61,22 +61,7 @@ export const budgetSlice = createSlice({
       state.budgetType = action.payload;
       let newBudgetValues: BudgetLineItem[] = [];
 
-      switch (action.payload) {
-        case BudgetTypes.cwv2:
-          console.log(BudgetTypes.cwv2);
-          newBudgetValues = clone(CWV_BUDGET_LINE_ITEMS);
-          break;
-        case BudgetTypes.cwv:
-          console.log(BudgetTypes.cwv);
-          newBudgetValues = clone(CWV_BUDGET_LINE_ITEMS);
-          break;
-        case BudgetTypes.asset:
-          console.log(BudgetTypes.asset);
-          newBudgetValues = clone(CWV_BUDGET_LINE_ITEMS);
-          break;
-      }
-
-      state.budgetValues = newBudgetValues.map((lineItem) => {
+      state.budgetValues = clone(CWV_BUDGET_LINE_ITEMS).map((lineItem) => {
         lineItem.userValue = lineItem.suggested;
         return lineItem;
       });
