@@ -29,6 +29,12 @@ export default function BudgetType() {
       description:
         "Core Web Vitals based performance budget's target metrics that guage what the user experiences.",
     },
+    {
+      id: BudgetTypes.asset,
+      title: 'Core Web 2',
+      description:
+        "Core Web Vitals based performance budget's target metrics that guage what the user experiences.",
+    },
   ];
 
   return (
@@ -37,10 +43,10 @@ export default function BudgetType() {
         Choose the type of metrics you want to target
       </h2>
       <div className="grid sm:grid-cols-2 gap-8 pb-8">
-        {budgetTypes.map(({ title, description, id }) => (
+        {budgetTypes.map(({ title, description, id }, index) => (
           <BudgetCard
             title={title}
-            key={id}
+            key={index}
             description={description}
             onBudgetClick={() => dispatch(setBudgetType(id))}
             selected={id === budgetType}
