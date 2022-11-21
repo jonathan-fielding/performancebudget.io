@@ -6,6 +6,7 @@ import clone from 'just-clone';
 export enum BudgetTypes {
   cwv = 'cwv',
   asset = 'asset',
+  cwv2 = 'cwv2',
 }
 
 interface BudgetLineItem {
@@ -65,6 +66,9 @@ export const budgetSlice = createSlice({
           newBudgetValues = clone(CWV_BUDGET_LINE_ITEMS);
           break;
         case BudgetTypes.asset:
+          newBudgetValues = clone(CWV_BUDGET_LINE_ITEMS);
+          break;
+        case BudgetTypes.cwv2:
           newBudgetValues = clone(CWV_BUDGET_LINE_ITEMS);
           break;
       }
