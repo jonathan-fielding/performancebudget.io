@@ -97,8 +97,8 @@ export default function ConnectionDropdown() {
   const selectedValue = useSelector(selectConnectionSpeed);
   const selected = people.find((person) => person.value === selectedValue)
   const dispatch = useDispatch();
-  const setSelected = ({ value }: { value: number }) => {
-    dispatch(setConnectionSpeed(value));
+  const setSelected = (e: any) => {
+    dispatch(setConnectionSpeed(e.target.value));
   };
 
   return (
@@ -110,23 +110,11 @@ export default function ConnectionDropdown() {
           </Listbox.Label>
           <div className="relative mt-1">
             <Listbox.Button className="relative w-full cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-md">
-              {selected?.id === 0 ? (
-                <span className="flex items-center">
-                  <span className="ml-3 px-2 block truncate">
-                    {selected.name}
-                  </span>
+              <span className="flex items-center">
+                <span className="ml-3 px-2 block truncate">
+                  {selected?.name}
                 </span>
-              ) : (
-                <span className="flex items-center">
-                  <img
-                    src={selected?.image}
-                    alt=""
-                    className="h-6 w-6 flex-shrink-0 rounded-full"
-                  />
-                  <span className="ml-3 block truncate">{selected?.name}</span>
-                </span>
-              )}
-
+              </span>
               <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
                 <ChevronUpDownIcon
                   className="h-5 w-5 text-gray-400"
@@ -157,13 +145,6 @@ export default function ConnectionDropdown() {
                     {({ selected, active }) => (
                       <>
                         <div className="flex items-center">
-                          {person.id !== 0 && (
-                            <img
-                              src={person.image}
-                              alt=""
-                              className="h-6 w-6 flex-shrink-0 rounded-full"
-                            />
-                          )}
                           <span
                             className={classNames(
                               selected ? 'font-semibold' : 'font-normal',
