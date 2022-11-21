@@ -6,7 +6,6 @@ import clone from 'just-clone';
 export enum BudgetTypes {
   cwv = 'cwv',
   asset = 'asset',
-  cwv2 = 'cwv2',
 }
 
 interface BudgetLineItem {
@@ -19,22 +18,27 @@ interface BudgetLineItem {
   unit: string;
 }
 
-const CWV_BUDGET_LINE_ITEMS: BudgetLineItem[] = [
-  { name: 'lcp', suggested: 2500, min: 0, max: 5000, unit: 'kb' },
-  { name: 'fid', suggested: 100, min: 0, max: 500, unit: 'kb' },
-  { name: 'cls', suggested: 0.1, min: 0, max: 1, step: 0.01, unit: 'kb' },
-  { name: 'inp', suggested: 0.2, min: 0, max: 1, step: 0.01, unit: 'kb' },
-];
+interface BudgetLineItems {
+  [BudgetTypes.asset]: BudgetLineItem[];
+  [BudgetTypes.cwv]: BudgetLineItem[];
+}
 
-const ASSET_BUDGET_LINE_ITEMS: BudgetLineItem[] = [
-  { name: 'html', suggested: 2500, min: 0, max: 5000, unit: 'kb' },
-  { name: 'css', suggested: 100, min: 0, max: 500, unit: 'kb' },
-  { name: 'javascript', suggested: 100, min: 0, max: 1, unit: 'kb' },
-  { name: 'images', suggested: 100, min: 0, max: 1, unit: 'kb' },
-  { name: 'video', suggested: 100, min: 0, max: 1, unit: 'kb' },
-  { name: 'fonts', suggested: 100, min: 0, max: 1, unit: 'kb' },
-];
-
+const BUDGET_LINE_ITEMS: BudgetLineItems = {
+  asset: [
+    { name: 'html', suggested: 2500, min: 0, max: 5000, unit: 'kb' },
+    { name: 'css', suggested: 100, min: 0, max: 500, unit: 'kb' },
+    { name: 'javascript', suggested: 100, min: 0, max: 1, unit: 'kb' },
+    { name: 'images', suggested: 100, min: 0, max: 1, unit: 'kb' },
+    { name: 'video', suggested: 100, min: 0, max: 1, unit: 'kb' },
+    { name: 'fonts', suggested: 100, min: 0, max: 1, unit: 'kb' },
+  ],
+  cwv: [
+    { name: 'lcp', suggested: 2500, min: 0, max: 5000, unit: 'kb' },
+    { name: 'fid', suggested: 100, min: 0, max: 500, unit: 'kb' },
+    { name: 'cls', suggested: 0.1, min: 0, max: 1, step: 0.01, unit: 'kb' },
+    { name: 'inp', suggested: 0.2, min: 0, max: 1, step: 0.01, unit: 'kb' },
+  ],
+};
 export interface BudgetState {
   budgetType: BudgetTypes | null;
   budgetValues: BudgetLineItem[];
@@ -56,12 +60,11 @@ export const budgetSlice = createSlice({
   initialState,
   reducers: {
     // Action to set the budget type, resetting the values from constants
-    setBudgetType(state: BudgetState, action) {
-      console.log(state, action);
-      state.budgetType = action.payload;
-      let newBudgetValues: BudgetLineItem[] = [];
+    setBudgetType(state: BudgetState, { payload }: { payload: BudgetTypes }) {
+      state.budgetType = payload;
+      const lineItems = BUDGET_LINE_ITEMS[payload];
 
-      state.budgetValues = clone(CWV_BUDGET_LINE_ITEMS).map((lineItem) => {
+      state.budgetValues = clone(lineItems).map((lineItem) => {
         lineItem.userValue = lineItem.suggested;
         return lineItem;
       });

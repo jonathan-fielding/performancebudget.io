@@ -29,12 +29,6 @@ export default function BudgetType() {
       description:
         "Core Web Vitals based performance budget's target metrics that guage what the user experiences.",
     },
-    {
-      id: BudgetTypes.cwv2,
-      title: 'Core Web 2',
-      description:
-        "Core Web Vitals based performance budget's target metrics that guage what the user experiences.",
-    },
   ];
 
   return (
