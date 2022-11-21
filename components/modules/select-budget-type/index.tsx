@@ -47,12 +47,7 @@ export default function BudgetType() {
           />
         ))}
       </div>
-      {budgetType === BudgetTypes.asset && (
-        <div className=" pb-8">
-          {/* <ConnectionDropdown /> */}
-          hello
-        </div>
-      )}
+      {budgetType === BudgetTypes.asset && <div className=" pb-8">hello</div>}
       {(budgetType === BudgetTypes.cwv ||
         (budgetType === BudgetTypes.asset && connectionSpeed !== 0)) && (
         <ButtonBar />

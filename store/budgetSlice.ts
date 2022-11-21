@@ -67,6 +67,7 @@ export const budgetSlice = createSlice({
           });
           break;
         case BudgetTypes.asset:
+          console.log('pre-error');
           state.budgetValues = clone(CWV_BUDGET_LINE_ITEMS).map((lineItem) => {
             lineItem.userValue = lineItem.suggested;
             return lineItem;
