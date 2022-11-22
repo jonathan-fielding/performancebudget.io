@@ -2,13 +2,14 @@ import { createSlice } from '@reduxjs/toolkit';
 import { AppState } from '.';
 import { HYDRATE } from 'next-redux-wrapper';
 import clone from 'just-clone';
+import { calcBudget } from '../utils/budget-size';
 
 export enum BudgetTypes {
   cwv = 'cwv',
   asset = 'asset',
 }
 
-interface BudgetLineItem {
+export interface BudgetLineItem {
   name: string;
   suggested: number;
   min: number;
@@ -42,16 +43,20 @@ const BUDGET_LINE_ITEMS: BudgetLineItems = {
 export interface BudgetState {
   budgetType: BudgetTypes | null;
   budgetValues: BudgetLineItem[];
+  budgetSize: number;
   step: number;
   connectionSpeed: number;
+  loadTime: number | null;
 }
 
 // Initial state
 const initialState: BudgetState = {
   budgetType: null,
   budgetValues: [],
+  budgetSize: 0,
   step: 1,
   connectionSpeed: 0,
+  loadTime: null,
 };
 
 // Actual Slice
@@ -71,18 +76,14 @@ export const budgetSlice = createSlice({
     },
 
     setBudgetValue(state: BudgetState, action) {
-      console.log(action.payload.name);
       const newBudgetValues: BudgetLineItem[] = state.budgetValues?.map(
         (budgetValue: BudgetLineItem) => {
           if (budgetValue.name === action.payload.name) {
-            console.log('change', action.payload.value);
             budgetValue.userValue = action.payload.value;
           }
           return budgetValue;
         }
       );
-
-      console.log('new', newBudgetValues);
 
       state.budgetValues = newBudgetValues;
     },
@@ -92,9 +93,21 @@ export const budgetSlice = createSlice({
       state.step = action.payload;
     },
 
-    // Action to set the budget type
+    // Action to set the budget connection speed
     setConnectionSpeed(state: BudgetState, action) {
       state.connectionSpeed = action.payload;
+      if (state.loadTime && state.loadTime > 0) {
+        state.budgetSize = calcBudget(state.connectionSpeed, action.payload);
+      }
+      return state;
+    },
+
+    // Action to set the budget load time
+    setLoadTime(state: BudgetState, action) {
+      state.loadTime = action.payload;
+      if (state.connectionSpeed > 0) {
+        state.budgetSize = calcBudget(state.connectionSpeed, action.payload);
+      }
       return state;
     },
   },
@@ -110,14 +123,21 @@ export const budgetSlice = createSlice({
   },
 });
 
-export const { setBudgetType, setStep, setConnectionSpeed, setBudgetValue } =
-  budgetSlice.actions;
+export const {
+  setBudgetType,
+  setStep,
+  setConnectionSpeed,
+  setBudgetValue,
+  setLoadTime,
+} = budgetSlice.actions;
 
 export const selectBudgetType = (state: AppState) => state.budget.budgetType;
 export const selectBudgetValues = (state: AppState) =>
   state.budget.budgetValues;
+export const selectBudgetSize = (state: AppState) => state.budget.budgetSize;
 export const selectStep = (state: AppState) => state.budget.step;
 export const selectConnectionSpeed = (state: AppState) =>
   state.budget.connectionSpeed;
+export const selectLoadTime = (state: AppState) => state.budget.loadTime;
 
 export default budgetSlice.reducer;

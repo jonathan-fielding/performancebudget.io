@@ -3,12 +3,14 @@ import {
   selectBudgetType,
   selectBudgetValues,
   setBudgetValue,
+  BudgetTypes,
 } from '../../../store/budgetSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import ButtonBar from '../../compounds/button-bar';
+import TotalByteBudget from '../../compounds/total-byte-budget';
 
 export default function BudgetConfiguration() {
-  const budgetType = useSelector(selectBudgetType) || 'asset';
+  const budgetType = useSelector(selectBudgetType);
   const dispatch = useDispatch();
   const fields = useSelector(selectBudgetValues);
 
@@ -26,6 +28,8 @@ export default function BudgetConfiguration() {
       <h2 className="pb-4 text-gray-700 font-bold text-xl sm:text-2xl">
         Configure your budget
       </h2>
+
+      {budgetType === BudgetTypes.asset && <TotalByteBudget />}
 
       <div className="grid sm:grid-cols-2 gap-8 pb-8">
         {fields?.map(

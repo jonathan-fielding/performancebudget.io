@@ -4,9 +4,9 @@ import ConnectionDropdown from '../../compounds/connection-dropdown';
 import {
   selectBudgetType,
   setBudgetType,
-  setStep,
   selectConnectionSpeed,
   BudgetTypes,
+  selectLoadTime,
 } from '../../../store/budgetSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import ButtonBar from '../../compounds/button-bar';
@@ -14,6 +14,7 @@ import BudgetTimeInput from '../../compounds/budget-time-input';
 
 export default function BudgetType() {
   const connectionSpeed = useSelector(selectConnectionSpeed);
+  const loadTime = useSelector(selectLoadTime);
   const budgetType = useSelector(selectBudgetType);
   const dispatch = useDispatch();
 
@@ -59,9 +60,10 @@ export default function BudgetType() {
         </div>
       )}
       {(budgetType === BudgetTypes.cwv ||
-        (budgetType === BudgetTypes.asset && connectionSpeed !== 0)) && (
-        <ButtonBar />
-      )}
+        (budgetType === BudgetTypes.asset &&
+          connectionSpeed !== 0 &&
+          loadTime !== null &&
+          loadTime > 0)) && <ButtonBar />}
     </div>
   );
 }

@@ -1,10 +1,3 @@
-import { Fragment } from 'react'
-
-const navigation = [
-  { name: 'Performance Budget Calculator', href: '/' },
-  { name: 'Performance Resources', href: '/resources' },
-]
-
 interface CardProps {
   title: string;
   description: string;
