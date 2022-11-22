@@ -4,6 +4,7 @@ import { HYDRATE } from 'next-redux-wrapper';
 import clone from 'just-clone';
 import { calcBudget } from '../utils/budget-size';
 import { add } from '../utils/add';
+import { calculateDefaultValues } from '../utils/calculate-default-values';
 
 export enum BudgetTypes {
   cwv = 'cwv',
@@ -20,7 +21,7 @@ export interface BudgetLineItem {
   unit: string;
 }
 
-interface BudgetLineItems {
+export interface BudgetLineItems {
   [BudgetTypes.asset]: BudgetLineItem[];
   [BudgetTypes.cwv]: BudgetLineItem[];
 }
@@ -68,12 +69,7 @@ export const budgetSlice = createSlice({
     // Action to set the budget type, resetting the values from constants
     setBudgetType(state: BudgetState, { payload }: { payload: BudgetTypes }) {
       state.budgetType = payload;
-      const lineItems = BUDGET_LINE_ITEMS[payload];
-
-      state.budgetValues = clone(lineItems).map((lineItem) => {
-        lineItem.userValue = lineItem.suggested;
-        return lineItem;
-      });
+      state.budgetValues = calculateDefaultValues(payload, 0);
     },
 
     setBudgetValue(state: BudgetState, action) {
@@ -107,8 +103,16 @@ export const budgetSlice = createSlice({
     setLoadTime(state: BudgetState, action) {
       state.loadTime = action.payload;
       if (state.connectionSpeed > 0) {
-        state.budgetSize = calcBudget(state.connectionSpeed, action.payload);
+        const budgetSize = calcBudget(state.connectionSpeed, action.payload);
+        state.budgetSize = budgetSize;
+        if (state.budgetType) {
+          state.budgetValues = calculateDefaultValues(
+            state.budgetType,
+            budgetSize
+          );
+        }
       }
+
       return state;
     },
   },
