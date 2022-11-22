@@ -3,6 +3,7 @@ import { AppState } from '.';
 import { HYDRATE } from 'next-redux-wrapper';
 import clone from 'just-clone';
 import { calcBudget } from '../utils/budget-size';
+import { add } from '../utils/add';
 
 export enum BudgetTypes {
   cwv = 'cwv',
@@ -135,6 +136,10 @@ export const selectBudgetType = (state: AppState) => state.budget.budgetType;
 export const selectBudgetValues = (state: AppState) =>
   state.budget.budgetValues;
 export const selectBudgetSize = (state: AppState) => state.budget.budgetSize;
+export const selectTotalBytes = (state: AppState) =>
+  state.budget.budgetValues
+    ?.map((field: BudgetLineItem) => field.userValue)
+    .reduce(add, 0);
 export const selectStep = (state: AppState) => state.budget.step;
 export const selectConnectionSpeed = (state: AppState) =>
   state.budget.connectionSpeed;
