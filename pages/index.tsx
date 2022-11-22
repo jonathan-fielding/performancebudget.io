@@ -22,12 +22,7 @@ const Home: NextPage = () => {
       <Head>
         <title>Performance Budget Calculator</title>
       </Head>
-      <Hero
-        title1="Set targets for your"
-        title2="websites performance"
-        buttonLink="#get-started"
-        buttonTitle="Get Started"
-      />
+      <Hero title1="Set targets for your" title2="websites performance" />
       <div className="bg-slate-200 p-14 text-gray-600">
         <div className="mx-auto max-w-7xl">
           <Stepper />
