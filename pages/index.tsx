@@ -1,22 +1,19 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import Hero from '../components/compounds/hero'
-import ConnectionDropdown from '../components/compounds/connection-dropdown'
+import Head from 'next/head';
+import Hero from '../components/compounds/hero';
 import Footer from '../components/compounds/footer'
 import Stepper from '../components/compounds/stepper'
 import BudgetType from '../components/modules/select-budget-type'
 import BudgetConfiguration from '../components/modules/budget-configuration'
 
 
-import { selectStep, selectBudgetType } from '../store/budget-slice';
+import { selectStep } from '../store/budget-slice';
 import { useSelector } from "react-redux";
 import PreviewBudget from '../components/modules/preview-budget'
 import DownloadBudget from '../components/modules/download-budget'
 
 const Home: NextPage = () => {
   const step = useSelector(selectStep);
-  const budgetType = useSelector(selectBudgetType);
   return (
     <>
       <Head>
