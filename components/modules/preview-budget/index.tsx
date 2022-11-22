@@ -1,9 +1,8 @@
 import {
-  selectBudgetType,
   selectBudgetValues,
   selectTotalBytes,
 } from '../../../store/budgetSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import ButtonBar from '../../compounds/button-bar';
 
 export default function PreviewBudget() {
