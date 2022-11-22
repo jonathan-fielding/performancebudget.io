@@ -72,10 +72,10 @@ const Blog: NextPage = () => {
       <div className="bg-slate-200 p-14">
         <ResourceFilter />
         <div className="grid grid-cols-2 gap-8 mx-auto max-w-7xl">
-          {filteredPosts.map((post) => {
+          {filteredPosts.map((post, index) => {
             return (
               <>
-                <Card {...post} />
+                <Card {...post} key={index} />
               </>
             );
           })}

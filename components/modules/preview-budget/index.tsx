@@ -1,11 +1,14 @@
 import {
+  selectBudgetType,
   selectBudgetValues,
   selectTotalBytes,
+  BudgetTypes,
 } from '../../../store/budgetSlice';
 import { useSelector } from 'react-redux';
 import ButtonBar from '../../compounds/button-bar';
 
 export default function PreviewBudget() {
+  const budgetType = useSelector(selectBudgetType);
   const budgetValues = useSelector(selectBudgetValues);
   const budget = useSelector(selectTotalBytes);
 
@@ -41,7 +44,9 @@ export default function PreviewBudget() {
         </table>
       </div>
 
-      <p className="pb-6 text-lg">Total asset size: {budget}Kb</p>
+      {budgetType === BudgetTypes.asset && (
+        <p className="pb-6 text-lg">Total asset size: {budget}Kb</p>
+      )}
 
       <h2 className="text-gray-700 font-bold text-xl sm:text-2xl">
         Estimated load times
