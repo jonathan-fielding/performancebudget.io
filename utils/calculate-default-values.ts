@@ -41,7 +41,7 @@ export function calculateDefaultValues(
   return values.map((lineItem) => {
     const average: number = AVERAGE_PERCENTS[lineItem.name];
     if (average) {
-      lineItem.userValue = (size / 100) * average;
+      lineItem.userValue = Math.round(size * average) / 100;
       lineItem.max = size;
     } else {
       lineItem.userValue = lineItem.suggested;

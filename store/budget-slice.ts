@@ -94,7 +94,14 @@ export const budgetSlice = createSlice({
     setConnectionSpeed(state: BudgetState, action) {
       state.connectionSpeed = action.payload;
       if (state.loadTime && state.loadTime > 0) {
-        state.budgetSize = calcBudget(state.connectionSpeed, action.payload);
+        const budgetSize = calcBudget(state.connectionSpeed, action.payload);
+        state.budgetSize = budgetSize;
+        if (state.budgetType) {
+          state.budgetValues = calculateDefaultValues(
+            state.budgetType,
+            budgetSize
+          );
+        }
       }
       return state;
     },
