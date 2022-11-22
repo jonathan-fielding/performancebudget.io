@@ -6,7 +6,6 @@ import Stepper from '../components/compounds/stepper'
 import BudgetType from '../components/modules/select-budget-type'
 import BudgetConfiguration from '../components/modules/budget-configuration'
 
-
 import { selectStep } from '../store/budget-slice';
 import { useSelector } from "react-redux";
 import PreviewBudget from '../components/modules/preview-budget'
