@@ -1,44 +1,54 @@
-import { Fragment } from 'react'
-import { selectBudgetType, setBudgetType, setStep } from "../../../store/budgetSlice";
-import { useDispatch, useSelector } from "react-redux";
+import {
+  selectBudgetType,
+  selectBudgetValues,
+} from '../../../store/budgetSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import ButtonBar from '../../compounds/button-bar';
 
 export default function PreviewBudget() {
+  const budgetValues = useSelector(selectBudgetValues);
   const budgetType = useSelector(selectBudgetType);
   const dispatch = useDispatch();
 
   return (
-    <div className='flex flex-col items-center'>
-      <h2 className="text-gray-700 font-bold text-xl sm:text-2xl">Asset Sizes</h2>
-      <p className="pb-6 text-gray-700">The sizes you selected for your budget.</p>
+    <div className="flex flex-col items-center">
+      <h2 className="text-gray-700 font-bold text-xl sm:text-2xl">
+        Asset Sizes
+      </h2>
+      <p className="pb-6 text-gray-700">
+        The sizes you selected for your budget.
+      </p>
 
       <div className="overflow-x-auto pb-8 text-gray-200">
         <table className="table w-full">
           <thead>
             <tr>
-              <th>HTML</th>
-              <th>CSS</th>
-              <th>JavaScript</th>
-              <th>Images</th>
-              <th>Video</th>
-              <th>Fonts</th>
+              {budgetValues.map((budgetValue, index) => {
+                return (
+                  <th key={index} className="px-4 py-2 text-left text-white">
+                    {budgetValue.name}
+                  </th>
+                );
+              })}
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>10Kb</td>
-              <td>10Kb</td>
-              <td>10Kb</td>
-              <td>10Kb</td>
-              <td>10Kb</td>
-              <td>10Kb</td>
+              {budgetValues.map((budgetValue, index) => {
+                return <td key={index}>{budgetValue.userValue}</td>;
+              })}
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h2 className="text-gray-700 font-bold text-xl sm:text-2xl">Estimated load times</h2>
-      <p className="pb-6 text-gray-700">The load times of your chosen budget across different internet connection speeds.</p>
+      <h2 className="text-gray-700 font-bold text-xl sm:text-2xl">
+        Estimated load times
+      </h2>
+      <p className="pb-6 text-gray-700">
+        The load times of your chosen budget across different internet
+        connection speeds.
+      </p>
 
       <div className="overflow-x-auto pb-8 text-gray-200">
         <table className="table  w-full">
@@ -71,5 +81,5 @@ export default function PreviewBudget() {
 
       <ButtonBar />
     </div>
-  )
+  );
 }
