@@ -27,8 +27,8 @@ const BUDGET_LINE_ITEMS: BudgetLineItems = {
   cwv: [
     { name: 'lcp', suggested: 2500, min: 0, max: 5000, unit: 'ms' },
     { name: 'fid', suggested: 100, min: 0, max: 500, unit: 'ms' },
-    { name: 'cls', suggested: 0.1, min: 0, max: 1, step: 0.01, unit: 'kb' },
-    { name: 'inp', suggested: 0.2, min: 0, max: 1, step: 0.01, unit: 'kb' },
+    { name: 'cls', suggested: 0.1, min: 0, max: 1, step: 0.01, unit: '' },
+    { name: 'inp', suggested: 0.2, min: 0, max: 1, step: 0.01, unit: '' },
   ],
 };
 
