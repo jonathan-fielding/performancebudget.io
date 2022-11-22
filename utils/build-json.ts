@@ -1,16 +1,30 @@
-function sumObjectValues(obj) {
-  const keys = Object.keys(obj);
-  let total = 0;
+import { BudgetLineItem } from '../store/budget-slice';
 
-  keys.forEach((key) => {
-    total += obj[key];
-  });
-
-  return total;
+interface ProcessedBudget {
+  html?: number;
+  javascript?: number;
+  image?: number;
+  css?: number;
+  video?: number;
+  fonts?: number;
+  total?: number;
 }
 
-export default function buildJson(budget) {
-  const total = sumObjectValues(budget);
+function processBudget(budget: BudgetLineItem[]): ProcessedBudget {
+  const processedBudget: any = {
+    total: 0,
+  };
+
+  budget.forEach(({ name, userValue }: BudgetLineItem) => {
+    processedBudget[name] = userValue || 0;
+    processedBudget.total = processedBudget.total + userValue;
+  });
+
+  return processedBudget;
+}
+
+export default function buildJson(budgetLineItems: BudgetLineItem[]) {
+  const budget = processBudget(budgetLineItems);
 
   return [
     {
@@ -25,7 +39,7 @@ export default function buildJson(budget) {
         },
         {
           resourceType: 'image',
-          budget: budget.images,
+          budget: budget.image,
         },
         {
           resourceType: 'stylesheet',
@@ -41,7 +55,7 @@ export default function buildJson(budget) {
         },
         {
           resourceType: 'total',
-          budget: total,
+          budget: budget.total,
         },
       ],
     },

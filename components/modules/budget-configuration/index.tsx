@@ -4,7 +4,7 @@ import {
   selectBudgetValues,
   setBudgetValue,
   BudgetTypes,
-} from '../../../store/budgetSlice';
+} from '../../../store/budget-slice';
 import { useDispatch, useSelector } from 'react-redux';
 import ButtonBar from '../../compounds/button-bar';
 import TotalByteBudget from '../../compounds/total-byte-budget';

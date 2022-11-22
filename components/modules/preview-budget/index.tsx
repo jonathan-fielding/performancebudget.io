@@ -3,7 +3,7 @@ import {
   selectBudgetValues,
   selectTotalBytes,
   BudgetTypes,
-} from '../../../store/budgetSlice';
+} from '../../../store/budget-slice';
 import { useSelector } from 'react-redux';
 import ButtonBar from '../../compounds/button-bar';
 

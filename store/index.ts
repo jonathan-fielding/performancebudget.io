@@ -1,5 +1,5 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import { budgetSlice } from "./budgetSlice";
+import { budgetSlice } from './budget-slice';
 import { resourcesSlice } from './resourcesSlice';
 import { createWrapper } from 'next-redux-wrapper';
 

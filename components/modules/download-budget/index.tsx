@@ -1,4 +1,4 @@
-import { selectBudgetValues } from '../../../store/budgetSlice';
+import { selectBudgetValues } from '../../../store/budget-slice';
 import { useSelector } from 'react-redux';
 import ButtonBar from '../../compounds/button-bar';
 import downloadBudget from '../../../utils/download-budget';

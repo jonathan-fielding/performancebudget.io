@@ -7,7 +7,7 @@ import {
   selectConnectionSpeed,
   BudgetTypes,
   selectLoadTime,
-} from '../../../store/budgetSlice';
+} from '../../../store/budget-slice';
 import { useDispatch, useSelector } from 'react-redux';
 import ButtonBar from '../../compounds/button-bar';
 import BudgetTimeInput from '../../compounds/budget-time-input';

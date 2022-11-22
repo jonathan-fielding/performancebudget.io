@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { selectStep, setStep } from "../../../store/budgetSlice";
+import { selectStep, setStep } from '../../../store/budget-slice';
 import { useDispatch, useSelector } from "react-redux";
 
 export default function ButtonBar() {

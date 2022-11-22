@@ -1,5 +1,8 @@
 import { useSelector } from 'react-redux';
-import { selectBudgetSize, selectTotalBytes } from '../../../store/budgetSlice';
+import {
+  selectBudgetSize,
+  selectTotalBytes,
+} from '../../../store/budget-slice';
 
 export default function TotalByteBudget() {
   const budgetSize = useSelector(selectBudgetSize);

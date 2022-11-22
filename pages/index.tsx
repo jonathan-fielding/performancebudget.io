@@ -9,7 +9,7 @@ import BudgetType from '../components/modules/select-budget-type'
 import BudgetConfiguration from '../components/modules/budget-configuration'
 
 
-import { selectStep, selectBudgetType } from "../store/budgetSlice";
+import { selectStep, selectBudgetType } from '../store/budget-slice';
 import { useSelector } from "react-redux";
 import PreviewBudget from '../components/modules/preview-budget'
 import DownloadBudget from '../components/modules/download-budget'

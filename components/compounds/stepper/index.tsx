@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { selectStep } from "../../../store/budgetSlice";
+import { selectStep } from '../../../store/budget-slice';
 import { useSelector } from "react-redux";
 
 export default function Stepper() {

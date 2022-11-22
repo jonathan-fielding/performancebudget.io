@@ -1,7 +1,10 @@
 import { Fragment, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
-import { selectConnectionSpeed, setConnectionSpeed } from "../../../store/budgetSlice";
+import {
+  selectConnectionSpeed,
+  setConnectionSpeed,
+} from '../../../store/budget-slice';
 import { useDispatch, useSelector } from "react-redux";
 
 interface ConnectionSpeed {

@@ -1,6 +1,6 @@
 import { ChangeEventHandler, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectLoadTime, setLoadTime } from '../../../store/budgetSlice';
+import { selectLoadTime, setLoadTime } from '../../../store/budget-slice';
 
 //Take any value and check its a number
 function isNumber(value: any) {
