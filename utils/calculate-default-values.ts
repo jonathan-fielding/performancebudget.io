@@ -17,12 +17,12 @@ const AVERAGE_PERCENTS: { [key: string]: number } = {
 
 const BUDGET_LINE_ITEMS: BudgetLineItems = {
   asset: [
-    { name: 'html', suggested: 2500, min: 0, max: 0, unit: 'kb' },
-    { name: 'css', suggested: 100, min: 0, max: 0, unit: 'kb' },
-    { name: 'javascript', suggested: 100, min: 0, max: 0, unit: 'kb' },
-    { name: 'images', suggested: 100, min: 0, max: 0, unit: 'kb' },
-    { name: 'video', suggested: 100, min: 0, max: 0, unit: 'kb' },
-    { name: 'fonts', suggested: 100, min: 0, max: 0, unit: 'kb' },
+    { name: 'html', suggested: 2500, min: 0, max: 0, unit: 'Kb' },
+    { name: 'css', suggested: 100, min: 0, max: 0, unit: 'Kb' },
+    { name: 'javascript', suggested: 100, min: 0, max: 0, unit: 'Kb' },
+    { name: 'images', suggested: 100, min: 0, max: 0, unit: 'Kb' },
+    { name: 'video', suggested: 100, min: 0, max: 0, unit: 'Kb' },
+    { name: 'fonts', suggested: 100, min: 0, max: 0, unit: 'Kb' },
   ],
   cwv: [
     { name: 'lcp', suggested: 2500, min: 0, max: 5000, unit: 'ms' },
