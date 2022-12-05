@@ -1,67 +1,17 @@
 import { BudgetLineItem } from '../store/budget-slice';
-import { BudgetTypes } from '../types/enums';
+import { LighthouseType } from '../types/enums';
 
-interface ProcessedBudget {
-  html?: number;
-  javascript?: number;
-  image?: number;
-  css?: number;
-  video?: number;
-  fonts?: number;
-  total?: number;
-}
-
-function processBudget(budget: BudgetLineItem[]): ProcessedBudget {
-  const processedBudget: any = {
-    total: 0,
-  };
-
-  budget.forEach(({ name, userValue }: BudgetLineItem) => {
-    processedBudget[name] = userValue || 0;
-    processedBudget.total = processedBudget.total + userValue;
-  });
-
-  return processedBudget;
-}
-
-export default function buildJson(
-  budgetType: BudgetTypes,
-  budgetLineItems: BudgetLineItem[]
-) {
-  const budget = processBudget(budgetLineItems);
+export default function buildJson(budgetLineItems: BudgetLineItem[]) {
+  const resourceSizes = budgetLineItems
+    .filter((line) => line.type === LighthouseType.resourceSizes)
+    .map(({ name, userValue }) => ({
+      resourceType: name,
+      budget: userValue,
+    }));
 
   return [
     {
-      resourceSizes: [
-        {
-          resourceType: 'document',
-          budget: budget.html,
-        },
-        {
-          resourceType: 'script',
-          budget: budget.javascript,
-        },
-        {
-          resourceType: 'image',
-          budget: budget.image,
-        },
-        {
-          resourceType: 'stylesheet',
-          budget: budget.css,
-        },
-        {
-          resourceType: 'media',
-          budget: budget.video,
-        },
-        {
-          resourceType: 'font',
-          budget: budget.fonts,
-        },
-        {
-          resourceType: 'total',
-          budget: budget.total,
-        },
-      ],
+      resourceSizes,
     },
   ];
 }

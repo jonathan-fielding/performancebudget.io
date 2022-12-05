@@ -1,15 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import {
-  selectBudgetType,
-  selectBudgetValues,
-} from '../../../store/budget-slice';
+import { selectBudgetValues } from '../../../store/budget-slice';
 import ButtonBar from '../../compounds/button-bar';
 import downloadBudget from '../../../utils/download-budget';
 
 export default function DownloadBudget() {
   const budgetValues = useSelector(selectBudgetValues);
-  const budgetType = useSelector(selectBudgetType);
 
   return (
     <div className="flex flex-col items-center">
@@ -24,7 +20,7 @@ export default function DownloadBudget() {
       <button
         type="button"
         className="btn btn-primary mb-8"
-        onClick={() => downloadBudget(budgetType, budgetValues)}
+        onClick={() => downloadBudget(budgetValues)}
       >
         Download
       </button>

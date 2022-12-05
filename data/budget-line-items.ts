@@ -5,7 +5,7 @@ export const BUDGET_LINE_ITEMS: BudgetLineItems = {
   asset: [
     {
       label: 'HTML',
-      name: 'html',
+      name: 'document',
       suggested: 2500,
       min: 0,
       max: 5000,
@@ -14,7 +14,7 @@ export const BUDGET_LINE_ITEMS: BudgetLineItems = {
     },
     {
       label: 'CSS',
-      name: 'css',
+      name: 'stylesheet',
       suggested: 100,
       min: 0,
       max: 500,
@@ -23,7 +23,7 @@ export const BUDGET_LINE_ITEMS: BudgetLineItems = {
     },
     {
       label: 'JavaScript',
-      name: 'javascript',
+      name: 'script',
       suggested: 100,
       min: 0,
       max: 1,
@@ -32,7 +32,7 @@ export const BUDGET_LINE_ITEMS: BudgetLineItems = {
     },
     {
       label: 'Images',
-      name: 'images',
+      name: 'image',
       suggested: 100,
       min: 0,
       max: 1,
@@ -41,7 +41,7 @@ export const BUDGET_LINE_ITEMS: BudgetLineItems = {
     },
     {
       label: 'Video',
-      name: 'video',
+      name: 'media',
       suggested: 100,
       min: 0,
       max: 1,
@@ -50,7 +50,7 @@ export const BUDGET_LINE_ITEMS: BudgetLineItems = {
     },
     {
       label: 'Fonts',
-      name: 'fonts',
+      name: 'font',
       suggested: 100,
       min: 0,
       max: 1,
