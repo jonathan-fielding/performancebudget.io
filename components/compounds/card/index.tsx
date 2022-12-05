@@ -1,3 +1,5 @@
+import React from 'react';
+
 interface CardProps {
   title: string;
   description: string;
@@ -5,7 +7,9 @@ interface CardProps {
   path: string;
 }
 
-export default function Card({ title, description, author, path }: CardProps) {
+export default function Card({
+  title, description, author, path,
+}: CardProps) {
   return (
     <a
       href={path}

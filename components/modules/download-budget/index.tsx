@@ -1,8 +1,9 @@
+import React from 'react';
+import { useSelector } from 'react-redux';
 import {
   selectBudgetType,
   selectBudgetValues,
 } from '../../../store/budget-slice';
-import { useSelector } from 'react-redux';
 import ButtonBar from '../../compounds/button-bar';
 import downloadBudget from '../../../utils/download-budget';
 
@@ -21,6 +22,7 @@ export default function DownloadBudget() {
       </p>
 
       <button
+        type="button"
         className="btn btn-primary mb-8"
         onClick={() => downloadBudget(budgetType, budgetValues)}
       >

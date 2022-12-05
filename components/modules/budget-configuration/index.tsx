@@ -1,10 +1,10 @@
-import { ChangeEvent, Fragment } from 'react';
+import React, { ChangeEvent } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   selectBudgetType,
   selectBudgetValues,
   setBudgetValue,
 } from '../../../store/budget-slice';
-import { useDispatch, useSelector } from 'react-redux';
 import ButtonBar from '../../compounds/button-bar';
 import TotalByteBudget from '../../compounds/total-byte-budget';
 import { BudgetTypes } from '../../../types/enums';
@@ -20,7 +20,7 @@ export default function BudgetConfiguration() {
       setBudgetValue({
         name: field.target.name,
         value: Number(field.target.value),
-      })
+      }),
     );
   };
 
@@ -33,9 +33,11 @@ export default function BudgetConfiguration() {
       {budgetType === BudgetTypes.asset && <TotalByteBudget />}
 
       <div className="grid sm:grid-cols-2 gap-8 pb-8">
-        {fields?.map(({ name, min, max, step, userValue, unit }, index) => (
+        {fields?.map(({
+          name, min, max, step, userValue, unit,
+        }) => (
           <InputSlider
-            key={index}
+            key={name}
             changeValue={changeValue}
             name={name}
             min={min}

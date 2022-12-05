@@ -1,7 +1,9 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
-import { wrapper } from "../store";
+/* eslint-disable react/jsx-props-no-spreading */
+import React from 'react';
+import '../styles/globals.css';
+import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { wrapper } from '../store';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

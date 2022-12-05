@@ -1,17 +1,17 @@
-import type { NextPage } from 'next'
+import React from 'react';
 import Head from 'next/head';
+import { useSelector } from 'react-redux';
 import Hero from '../components/compounds/hero';
-import Footer from '../components/compounds/footer'
-import Stepper from '../components/compounds/stepper'
-import BudgetType from '../components/modules/select-budget-type'
-import BudgetConfiguration from '../components/modules/budget-configuration'
+import Footer from '../components/compounds/footer';
+import Stepper from '../components/compounds/stepper';
+import BudgetType from '../components/modules/select-budget-type';
+import BudgetConfiguration from '../components/modules/budget-configuration';
 
 import { selectStep } from '../store/budget-slice';
-import { useSelector } from "react-redux";
-import PreviewBudget from '../components/modules/preview-budget'
-import DownloadBudget from '../components/modules/download-budget'
+import PreviewBudget from '../components/modules/preview-budget';
+import DownloadBudget from '../components/modules/download-budget';
 
-const Home: NextPage = () => {
+function Home() {
   const step = useSelector(selectStep);
   return (
     <>
@@ -31,6 +31,6 @@ const Home: NextPage = () => {
       <Footer />
     </>
   );
-};
+}
 
-export default Home
+export default Home;

@@ -1,7 +1,9 @@
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { CONNECTION_SPEEDS } from '../../../data/connection-speeds';
 import { selectBudgetValues } from '../../../store/budget-slice';
-import { Table, Row, DataColumn, HeadingColumn } from '../../elements/table';
+import {
+  Table, Row, DataColumn, HeadingColumn,
+} from '../../elements/table';
 
 export default function BudgetBreakdownTable() {
   const budgetValues = useSelector(selectBudgetValues);
@@ -9,23 +11,21 @@ export default function BudgetBreakdownTable() {
     <Table>
       <thead>
         <Row>
-          {budgetValues.map((budgetValue, index) => {
-            return (
-              <HeadingColumn key={index}>{budgetValue.name}</HeadingColumn>
-            );
-          })}
+          {budgetValues.map((budgetValue) => (
+            <HeadingColumn key={budgetValue.name}>
+              {budgetValue.name}
+            </HeadingColumn>
+          ))}
         </Row>
       </thead>
       <tbody>
         <Row>
-          {budgetValues.map((budgetValue: any, index) => {
-            return (
-              <DataColumn key={index}>
-                {budgetValue?.userValue}
-                {budgetValue?.unit}
-              </DataColumn>
-            );
-          })}
+          {budgetValues.map((budgetValue) => (
+            <DataColumn key={budgetValue.name}>
+              {budgetValue?.userValue}
+              {budgetValue?.unit}
+            </DataColumn>
+          ))}
         </Row>
       </tbody>
     </Table>

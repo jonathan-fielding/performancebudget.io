@@ -1,21 +1,41 @@
-export default function InputSlider(props: any) {
+import React from 'react';
+
+interface InputSliderProps {
+  name: string;
+  min: number;
+  max: number;
+  step: number;
+  userValue: number;
+  unit: string;
+  changeValue: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export default function InputSlider({
+  name,
+  min,
+  max,
+  step,
+  userValue,
+  unit,
+  changeValue,
+}: InputSliderProps) {
   return (
     <div>
-      <label htmlFor={props.name} className="mb-2 block">
-        {props.name}
+      <label htmlFor={name} className="mb-2 block">
+        {name}
         <span className="float-right">
-          {props.userValue}
-          {props.unit}
+          {userValue}
+          {unit}
         </span>
       </label>
       <input
-        name={props.name}
+        name={name}
         type="range"
-        min={props.min}
-        max={props.max}
-        step={props.step}
+        min={min}
+        max={max}
+        step={step}
         className="range range-md w-72 range-primary"
-        onChange={props.changeValue}
+        onChange={changeValue}
       />
     </div>
   );

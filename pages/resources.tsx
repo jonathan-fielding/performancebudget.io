@@ -1,14 +1,14 @@
-import type { NextPage } from 'next'
+import React from 'react';
 import Head from 'next/head';
+import { useSelector } from 'react-redux';
 import Card from '../components/compounds/card';
 import Footer from '../components/compounds/footer';
 import Hero from '../components/compounds/hero';
 import ResourceFilter from '../components/compounds/resource-filter';
 
-import { useSelector } from 'react-redux';
 import { selectFilterValue } from '../store/resourcesSlice';
 
-const Blog: NextPage = () => {
+function Blog() {
   const filter = useSelector(selectFilterValue);
 
   const posts = [
@@ -59,9 +59,7 @@ const Blog: NextPage = () => {
     },
   ];
 
-  const filteredPosts = posts.filter((post) => {
-    return post.tags.includes(filter || '');
-  });
+  const filteredPosts = posts.filter((post) => post.tags.includes(filter || ''));
 
   return (
     <>
@@ -72,18 +70,15 @@ const Blog: NextPage = () => {
       <div className="bg-slate-200 p-14">
         <ResourceFilter />
         <div className="grid grid-cols-2 gap-8 mx-auto max-w-7xl">
-          {filteredPosts.map((post, index) => {
-            return (
-              <>
-                <Card {...post} key={index} />
-              </>
-            );
-          })}
+          {filteredPosts.map((post) => (
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            <Card {...post} key={post.key} />
+          ))}
         </div>
       </div>
       <Footer />
     </>
   );
-};
+}
 
-export default Blog
+export default Blog;

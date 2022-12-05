@@ -1,4 +1,5 @@
-import { Fragment } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import BudgetCard from '../../compounds/budget-type-card';
 import ConnectionDropdown from '../../compounds/connection-dropdown';
 import {
@@ -7,7 +8,6 @@ import {
   selectConnectionSpeed,
   selectLoadTime,
 } from '../../../store/budget-slice';
-import { useDispatch, useSelector } from 'react-redux';
 import ButtonBar from '../../compounds/button-bar';
 import BudgetTimeInput from '../../compounds/budget-time-input';
 import { BudgetTypes } from '../../../types/enums';
@@ -45,11 +45,11 @@ export default function BudgetType() {
           <BudgetTimeInput />
         </div>
       )}
-      {(budgetType === BudgetTypes.cwv ||
-        (budgetType === BudgetTypes.asset &&
-          connectionSpeed !== 0 &&
-          loadTime !== null &&
-          loadTime > 0)) && <ButtonBar />}
+      {(budgetType === BudgetTypes.cwv
+        || (budgetType === BudgetTypes.asset
+          && connectionSpeed !== 0
+          && loadTime !== null
+          && loadTime > 0)) && <ButtonBar />}
     </div>
   );
 }

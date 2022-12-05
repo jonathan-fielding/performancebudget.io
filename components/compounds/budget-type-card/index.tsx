@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import React from 'react';
 
 interface BudgetCardProps {
   title: string;
@@ -21,7 +21,7 @@ export default function BudgetCard({
   }
 
   return (
-    <button onClick={onBudgetClick} className={classes}>
+    <button type="button" onClick={onBudgetClick} className={classes}>
       <h2 className="font-semibold text-2xl">{title}</h2>
       <p>{description}</p>
     </button>

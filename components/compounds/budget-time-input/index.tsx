@@ -1,16 +1,18 @@
-import { ChangeEventHandler, useState } from 'react';
+import React, { ChangeEventHandler, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectLoadTime, setLoadTime } from '../../../store/budget-slice';
 
-//Take any value and check its a number
+// Take any value and check its a number
 function isNumber(value: any) {
-  return !isNaN(value);
+  return !Number.isNaN(value);
 }
 
 export default function BudgetTimeInput() {
   const loadTime = useSelector(selectLoadTime);
   const dispatch = useDispatch();
-  const [value, setValue] = useState(loadTime === null ? '' : String(loadTime));
+  const [currentValue, setCurrentValue] = useState(
+    loadTime === null ? '' : String(loadTime),
+  );
 
   // Only allows numbers to be entered
   const validateInputIsInteger: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -25,7 +27,7 @@ export default function BudgetTimeInput() {
       dispatch(setLoadTime(Number(value)));
     }
 
-    setValue(value);
+    setCurrentValue(value);
   };
 
   return (
@@ -40,7 +42,7 @@ export default function BudgetTimeInput() {
         <div className="">
           {/* TODO - add error handling */}
           <input
-            value={value}
+            value={currentValue}
             id="budget-time"
             name="budget-time"
             type="text"

@@ -1,43 +1,63 @@
 interface ConnectionSpeed {
+  id: string;
   name: string;
-  speed: number;
+  value: number;
 }
 
 export const CONNECTION_SPEEDS: ConnectionSpeed[] = [
   {
+    id: 0,
+    name: 'Select a speed which reflects your websites audience',
+    value: 0,
+  },
+  {
+    id: 1,
     name: 'Mobile 2G - Slow (35 Kbps)',
-    speed: 4.375,
+    value: 4.375,
   },
   {
+    id: 2,
     name: '56K Dial-Up (49Kbps)',
-    speed: 7,
+    value: 7,
   },
   {
+    id: 3,
     name: 'Mobile 2G - Fast (150 Kbps)',
-    speed: 18.75,
+    value: 18.75,
   },
   {
+    id: 4,
     name: 'Mobile Edge (240 Kbps)',
-    speed: 30,
+    value: 30,
   },
   {
+    id: 5,
     name: 'Mobile 3G - Slow (780 Kbps)',
-    speed: 96,
+    value: 96,
   },
   {
+    id: 6,
     name: 'DSL (1.5Mbps)',
-    speed: 187.5,
+    value: 187.5,
   },
   {
+    id: 7,
     name: 'Mobile 3G - Fast (1.6 Mbps)',
-    speed: 200,
+    value: 200,
   },
   {
+    id: 8,
     name: 'Cable (5Mbps)',
-    speed: 625,
+    value: 625,
   },
   {
+    id: 9,
     name: 'FIOS (20Mbps)',
-    speed: 2500,
+    value: 2500,
+  },
+  {
+    id: 10,
+    name: 'Custom',
+    value: 999999999999,
   },
 ];

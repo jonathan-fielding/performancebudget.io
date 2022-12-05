@@ -1,11 +1,11 @@
-import { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   selectFilterValue,
   setFilterValue,
 } from '../../../store/resourcesSlice';
-import { useDispatch, useSelector } from 'react-redux';
 
 interface FilterValues {
   id: number;
@@ -37,8 +37,8 @@ function classNames(...classes: string[]) {
 
 export default function ResourceFilter() {
   const selectedValue = useSelector(selectFilterValue);
-  const selected = filterValues.find(
-    (filterValue) => filterValue.value === selectedValue
+  const selectedFilter = filterValues.find(
+    (filterValue) => filterValue.value === selectedValue,
   );
   const dispatch = useDispatch();
   const setSelected = ({ value }: FilterValues) => {
@@ -46,7 +46,7 @@ export default function ResourceFilter() {
   };
 
   return (
-    <Listbox value={selected} onChange={setSelected}>
+    <Listbox value={selectedFilter} onChange={setSelected}>
       {({ open }) => (
         <>
           <Listbox.Label className="text-md sm:text-md font-bold text-gray-700 pb-4 pr-4">
@@ -55,15 +55,17 @@ export default function ResourceFilter() {
 
           <div className="relative mt-1 mb-5">
             <Listbox.Button className="relative cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-md w-64">
-              {selected?.id === 0 ? (
+              {selectedFilter?.id === 0 ? (
                 <span className="flex items-center">
                   <span className="ml-3 px-1 block truncate">
-                    {selected.name}
+                    {selectedFilter.name}
                   </span>
                 </span>
               ) : (
                 <span className="flex items-center">
-                  <span className="ml-3 block truncate">{selected?.name}</span>
+                  <span className="ml-3 block truncate">
+                    {selectedFilter?.name}
+                  </span>
                 </span>
               )}
 
@@ -86,12 +88,10 @@ export default function ResourceFilter() {
                 {filterValues.map((filterValue) => (
                   <Listbox.Option
                     key={filterValue.id}
-                    className={({ active }) =>
-                      classNames(
-                        active ? 'text-white bg-indigo-600' : 'text-gray-900',
-                        'relative cursor-default select-none py-2 pl-3 pr-9'
-                      )
-                    }
+                    className={({ active }) => classNames(
+                      active ? 'text-white bg-indigo-600' : 'text-gray-900',
+                      'relative cursor-default select-none py-2 pl-3 pr-9',
+                    )}
                     value={filterValue}
                   >
                     {({ selected, active }) => (
@@ -100,7 +100,7 @@ export default function ResourceFilter() {
                           <span
                             className={classNames(
                               selected ? 'font-semibold' : 'font-normal',
-                              'ml-3 block truncate'
+                              'ml-3 block truncate',
                             )}
                           >
                             {filterValue.name}
@@ -111,7 +111,7 @@ export default function ResourceFilter() {
                           <span
                             className={classNames(
                               active ? 'text-white' : 'text-indigo-600',
-                              'absolute inset-y-0 right-0 flex items-center pr-4'
+                              'absolute inset-y-0 right-0 flex items-center pr-4',
                             )}
                           >
                             <CheckIcon className="h-5 w-5" aria-hidden="true" />

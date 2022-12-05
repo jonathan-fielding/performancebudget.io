@@ -1,3 +1,29 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["airbnb", "airbnb-typescript", "plugin:@next/next/recommended"],
+  "rules": {
+    "react/require-default-props": "off",
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["hrefLeft", "hrefRight"],
+        "aspects": ["invalidHref", "preferButton"]
+      }
+    ],
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        "depth": 2
+      }
+    ]
+  },
+  "parser": "@typescript-eslint/parser",
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      }
+    }
+  ]
 }
