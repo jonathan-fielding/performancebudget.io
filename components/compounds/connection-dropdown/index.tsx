@@ -6,7 +6,7 @@ import {
   selectConnectionSpeed,
   setConnectionSpeed,
 } from '../../../store/budget-slice';
-import { CONNECTION_SPEEDS } from '../../../data/connection-speeds';
+import CONNECTION_SPEEDS from '../../../data/connection-speeds';
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');

@@ -11,7 +11,7 @@ import {
 import ButtonBar from '../../compounds/button-bar';
 import BudgetTimeInput from '../../compounds/budget-time-input';
 import { BudgetTypes } from '../../../types/enums';
-import { budgetTypes } from '../../../data/budget-types';
+import { BUDGET_TYPES } from '../../../data/budget-types';
 
 export default function BudgetType() {
   const connectionSpeed = useSelector(selectConnectionSpeed);
@@ -25,7 +25,7 @@ export default function BudgetType() {
         Choose the type of metrics you want to target
       </h2>
       <div className="grid sm:grid-cols-2 gap-8 pb-8">
-        {budgetTypes.map(({ title, description, id }) => (
+        {BUDGET_TYPES.map(({ title, description, id }) => (
           <BudgetCard
             title={title}
             key={id}
@@ -45,11 +45,11 @@ export default function BudgetType() {
           <BudgetTimeInput />
         </div>
       )}
-      {(budgetType === BudgetTypes.cwv
-        || (budgetType === BudgetTypes.asset
-          && connectionSpeed !== 0
-          && loadTime !== null
-          && loadTime > 0)) && <ButtonBar />}
+      {(budgetType === BudgetTypes.cwv ||
+        (budgetType === BudgetTypes.asset &&
+          connectionSpeed !== 0 &&
+          loadTime !== null &&
+          loadTime > 0)) && <ButtonBar />}
     </div>
   );
 }

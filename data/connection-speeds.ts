@@ -1,10 +1,10 @@
 interface ConnectionSpeed {
-  id: string;
+  id: number;
   name: string;
   value: number;
 }
 
-export const CONNECTION_SPEEDS: ConnectionSpeed[] = [
+const CONNECTION_SPEEDS: ConnectionSpeed[] = [
   {
     id: 0,
     name: 'Select a speed which reflects your websites audience',
@@ -61,3 +61,5 @@ export const CONNECTION_SPEEDS: ConnectionSpeed[] = [
     value: 999999999999,
   },
 ];
+
+export default CONNECTION_SPEEDS;

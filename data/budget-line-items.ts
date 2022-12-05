@@ -1,7 +1,7 @@
-import { BudgetLineItems } from '../store/budget-slice';
+import { BudgetLineItems } from '../types/budget';
 import { LighthouseType } from '../types/enums';
 
-export const BUDGET_LINE_ITEMS: BudgetLineItems = {
+const BUDGET_LINE_ITEMS: BudgetLineItems = {
   asset: [
     {
       label: 'HTML',
@@ -99,3 +99,5 @@ export const BUDGET_LINE_ITEMS: BudgetLineItems = {
     },
   ],
 };
+
+export default BUDGET_LINE_ITEMS;

@@ -1,29 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { AppState } from '.';
 import { HYDRATE } from 'next-redux-wrapper';
-import clone from 'just-clone';
+// eslint-disable-next-line import/no-cycle
+import { AppState } from '.';
 import { calcBudget } from '../utils/budget-size';
 import { add } from '../utils/add';
 import { calculateDefaultValues } from '../utils/calculate-default-values';
-import { LighthouseType, BudgetTypes } from '../types/enums';
-
-export interface BudgetLineItem {
-  label: String;
-  name: string;
-  suggested: number;
-  min: number;
-  max: number;
-  step?: number;
-  userValue?: number;
-  unit: string;
-  type: LighthouseType;
-}
-
-export interface BudgetLineItems {
-  [BudgetTypes.asset]: BudgetLineItem[];
-  [BudgetTypes.cwv]: BudgetLineItem[];
-}
-
+import { BudgetTypes } from '../types/enums';
+import { BudgetLineItem } from '../types/budget';
 export interface BudgetState {
   budgetType: BudgetTypes | null;
   budgetValues: BudgetLineItem[];

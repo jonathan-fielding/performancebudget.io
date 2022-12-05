@@ -1,4 +1,4 @@
-import { BudgetLineItem } from '../store/budget-slice';
+import { BudgetLineItem } from '../types/budget';
 import { LighthouseType } from '../types/enums';
 
 export default function buildJson(budgetLineItems: BudgetLineItem[]) {

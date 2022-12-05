@@ -1,6 +1,6 @@
 import { BudgetTypes } from '../types/enums';
 
-export const budgetTypes = [
+export const BUDGET_TYPES = [
   {
     id: BudgetTypes.asset,
     title: 'Asset',

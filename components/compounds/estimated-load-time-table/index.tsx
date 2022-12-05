@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { CONNECTION_SPEEDS } from '../../../data/connection-speeds';
+import CONNECTION_SPEEDS from '../../../data/connection-speeds';
 import { selectTotalBytes } from '../../../store/budget-slice';
 import { twoDecimalPlace } from '../../../utils/rendering';
 import {

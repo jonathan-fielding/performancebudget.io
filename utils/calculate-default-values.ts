@@ -1,6 +1,6 @@
 import clone from 'just-clone';
-import { BUDGET_LINE_ITEMS } from '../data/budget-line-items';
-import { BudgetLineItem } from '../store/budget-slice';
+import BUDGET_LINE_ITEMS from '../data/budget-line-items';
+import { BudgetLineItem } from '../types/budget';
 import { BudgetTypes } from '../types/enums';
 
 //TODO - update these based on newer values
