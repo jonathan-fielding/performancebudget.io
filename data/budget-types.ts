@@ -1,6 +1,6 @@
 import { BudgetTypes } from '../types/enums';
 
-export const BUDGET_TYPES = [
+const BUDGET_TYPES = [
   {
     id: BudgetTypes.asset,
     title: 'Asset',
@@ -14,3 +14,5 @@ export const BUDGET_TYPES = [
       "Core Web Vitals based performance budget's target metrics that guage what the user experiences.",
   },
 ];
+
+export default BUDGET_TYPES;

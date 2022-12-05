@@ -11,7 +11,7 @@ import {
 import ButtonBar from '../../compounds/button-bar';
 import BudgetTimeInput from '../../compounds/budget-time-input';
 import { BudgetTypes } from '../../../types/enums';
-import { BUDGET_TYPES } from '../../../data/budget-types';
+import BUDGET_TYPES from '../../../data/budget-types';
 
 export default function BudgetType() {
   const connectionSpeed = useSelector(selectConnectionSpeed);
