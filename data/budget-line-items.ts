@@ -65,7 +65,7 @@ const BUDGET_LINE_ITEMS: BudgetLineItems = {
       suggested: 2500,
       min: 0,
       max: 5000,
-      unit: 'kb',
+      unit: 'ms',
       type: LighthouseType.timings,
     },
     {
@@ -74,7 +74,7 @@ const BUDGET_LINE_ITEMS: BudgetLineItems = {
       suggested: 100,
       min: 0,
       max: 500,
-      unit: 'kb',
+      unit: 'ms',
       type: LighthouseType.timings,
     },
     {
@@ -84,7 +84,7 @@ const BUDGET_LINE_ITEMS: BudgetLineItems = {
       min: 0,
       max: 1,
       step: 0.01,
-      unit: 'kb',
+      unit: '',
       type: LighthouseType.timings,
     },
     {
@@ -94,7 +94,7 @@ const BUDGET_LINE_ITEMS: BudgetLineItems = {
       min: 0,
       max: 1,
       step: 0.01,
-      unit: 'kb',
+      unit: '',
       type: LighthouseType.timings,
     },
   ],

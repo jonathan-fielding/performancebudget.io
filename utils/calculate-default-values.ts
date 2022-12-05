@@ -5,12 +5,12 @@ import { BudgetTypes } from '../types/enums';
 
 //TODO - update these based on newer values
 const AVERAGE_PERCENTS: { [key: string]: number } = {
-  css: 3.25,
-  html: 2.5,
-  javascript: 16.5,
-  images: 63,
-  video: 9.75,
-  fonts: 5,
+  stylesheet: 3.25,
+  document: 2.5,
+  script: 16.5,
+  image: 63,
+  media: 9.75,
+  font: 5,
 };
 
 export function calculateDefaultValues(
