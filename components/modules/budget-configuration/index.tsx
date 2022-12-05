@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ButtonBar from '../../compounds/button-bar';
 import TotalByteBudget from '../../compounds/total-byte-budget';
 import { BudgetTypes } from '../../../types/enums';
+import InputSlider from '../../compounds/input-slider';
 
 export default function BudgetConfiguration() {
   const budgetType = useSelector(selectBudgetType);
@@ -34,24 +35,16 @@ export default function BudgetConfiguration() {
       <div className="grid sm:grid-cols-2 gap-8 pb-8">
         {fields?.map(
           ({ name, suggested, min, max, step, userValue, unit }, index) => (
-            <div key={index}>
-              <label htmlFor={name} className="mb-2 block">
-                {name}
-                <span className="float-right">
-                  {userValue}
-                  {unit}
-                </span>
-              </label>
-              <input
-                name={name}
-                type="range"
-                min={min}
-                max={max}
-                step={step}
-                className="range range-md w-72 range-primary"
-                onChange={changeValue}
-              />
-            </div>
+            <InputSlider
+              key={index}
+              changeValue={changeValue}
+              name={name}
+              min={min}
+              max={max}
+              step={step}
+              userValue={userValue}
+              unit={unit}
+            />
           )
         )}
       </div>
