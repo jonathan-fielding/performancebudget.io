@@ -1,9 +1,7 @@
 import clone from 'just-clone';
-import {
-  BudgetLineItems,
-  BudgetLineItem,
-  BudgetTypes,
-} from '../store/budget-slice';
+import { BUDGET_LINE_ITEMS } from '../data/budget-line-items';
+import { BudgetLineItem } from '../store/budget-slice';
+import { BudgetTypes } from '../types/enums';
 
 //TODO - update these based on newer values
 const AVERAGE_PERCENTS: { [key: string]: number } = {
@@ -13,23 +11,6 @@ const AVERAGE_PERCENTS: { [key: string]: number } = {
   images: 63,
   video: 9.75,
   fonts: 5,
-};
-
-const BUDGET_LINE_ITEMS: BudgetLineItems = {
-  asset: [
-    { name: 'html', suggested: 2500, min: 0, max: 0, unit: 'Kb' },
-    { name: 'css', suggested: 100, min: 0, max: 0, unit: 'Kb' },
-    { name: 'javascript', suggested: 100, min: 0, max: 0, unit: 'Kb' },
-    { name: 'images', suggested: 100, min: 0, max: 0, unit: 'Kb' },
-    { name: 'video', suggested: 100, min: 0, max: 0, unit: 'Kb' },
-    { name: 'fonts', suggested: 100, min: 0, max: 0, unit: 'Kb' },
-  ],
-  cwv: [
-    { name: 'lcp', suggested: 2500, min: 0, max: 5000, unit: 'ms' },
-    { name: 'fid', suggested: 100, min: 0, max: 500, unit: 'ms' },
-    { name: 'cls', suggested: 0.1, min: 0, max: 1, step: 0.01, unit: '' },
-    { name: 'inp', suggested: 0.2, min: 0, max: 1, step: 0.01, unit: '' },
-  ],
 };
 
 export function calculateDefaultValues(

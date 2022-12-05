@@ -2,12 +2,12 @@ import {
   selectBudgetType,
   selectBudgetValues,
   selectTotalBytes,
-  BudgetTypes,
 } from '../../../store/budget-slice';
 import { useSelector } from 'react-redux';
 import ButtonBar from '../../compounds/button-bar';
 import EstimatedLoadTime from '../../compounds/estimated-load-time-table';
 import BudgetBreakdownTable from '../../compounds/budget-breakdown-table';
+import { BudgetTypes } from '../../../types/enums';
 
 const titles = {
   [BudgetTypes.asset]: 'Asset Sizes',

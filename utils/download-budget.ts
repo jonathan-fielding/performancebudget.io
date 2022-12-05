@@ -1,9 +1,13 @@
 import { saveAs } from 'file-saver';
 import { BudgetLineItem } from '../store/budget-slice';
+import { BudgetTypes } from '../types/enums';
 import buildJson from './build-json';
 
-export default function downloadBudget(budget: BudgetLineItem[]) {
-  const content = JSON.stringify(buildJson(budget));
+export default function downloadBudget(
+  budgetType: BudgetTypes,
+  budget: BudgetLineItem[]
+) {
+  const content = JSON.stringify(buildJson(budgetType, budget));
   const filename = 'budget.json';
 
   const blob = new Blob([content], {

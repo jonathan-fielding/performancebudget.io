@@ -1,4 +1,5 @@
 import { BudgetLineItem } from '../store/budget-slice';
+import { BudgetTypes } from '../types/enums';
 
 interface ProcessedBudget {
   html?: number;
@@ -23,7 +24,10 @@ function processBudget(budget: BudgetLineItem[]): ProcessedBudget {
   return processedBudget;
 }
 
-export default function buildJson(budgetLineItems: BudgetLineItem[]) {
+export default function buildJson(
+  budgetType: BudgetTypes,
+  budgetLineItems: BudgetLineItem[]
+) {
   const budget = processBudget(budgetLineItems);
 
   return [

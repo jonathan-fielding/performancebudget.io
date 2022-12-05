@@ -3,11 +3,11 @@ import {
   selectBudgetType,
   selectBudgetValues,
   setBudgetValue,
-  BudgetTypes,
 } from '../../../store/budget-slice';
 import { useDispatch, useSelector } from 'react-redux';
 import ButtonBar from '../../compounds/button-bar';
 import TotalByteBudget from '../../compounds/total-byte-budget';
+import { BudgetTypes } from '../../../types/enums';
 
 export default function BudgetConfiguration() {
   const budgetType = useSelector(selectBudgetType);
@@ -18,7 +18,7 @@ export default function BudgetConfiguration() {
     dispatch(
       setBudgetValue({
         name: field.target.name,
-        value: parseInt(field.target.value, 10),
+        value: Number(field.target.value),
       })
     );
   };

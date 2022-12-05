@@ -5,12 +5,12 @@ import {
   selectBudgetType,
   setBudgetType,
   selectConnectionSpeed,
-  BudgetTypes,
   selectLoadTime,
 } from '../../../store/budget-slice';
 import { useDispatch, useSelector } from 'react-redux';
 import ButtonBar from '../../compounds/button-bar';
 import BudgetTimeInput from '../../compounds/budget-time-input';
+import { BudgetTypes } from '../../../types/enums';
 
 export default function BudgetType() {
   const connectionSpeed = useSelector(selectConnectionSpeed);

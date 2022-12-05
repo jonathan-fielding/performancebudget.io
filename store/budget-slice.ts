@@ -5,13 +5,10 @@ import clone from 'just-clone';
 import { calcBudget } from '../utils/budget-size';
 import { add } from '../utils/add';
 import { calculateDefaultValues } from '../utils/calculate-default-values';
-
-export enum BudgetTypes {
-  cwv = 'cwv',
-  asset = 'asset',
-}
+import { LighthouseType, BudgetTypes } from '../types/enums';
 
 export interface BudgetLineItem {
+  label: String;
   name: string;
   suggested: number;
   min: number;
@@ -19,6 +16,7 @@ export interface BudgetLineItem {
   step?: number;
   userValue?: number;
   unit: string;
+  type: LighthouseType;
 }
 
 export interface BudgetLineItems {
@@ -26,22 +24,6 @@ export interface BudgetLineItems {
   [BudgetTypes.cwv]: BudgetLineItem[];
 }
 
-const BUDGET_LINE_ITEMS: BudgetLineItems = {
-  asset: [
-    { name: 'html', suggested: 2500, min: 0, max: 5000, unit: 'kb' },
-    { name: 'css', suggested: 100, min: 0, max: 500, unit: 'kb' },
-    { name: 'javascript', suggested: 100, min: 0, max: 1, unit: 'kb' },
-    { name: 'images', suggested: 100, min: 0, max: 1, unit: 'kb' },
-    { name: 'video', suggested: 100, min: 0, max: 1, unit: 'kb' },
-    { name: 'fonts', suggested: 100, min: 0, max: 1, unit: 'kb' },
-  ],
-  cwv: [
-    { name: 'lcp', suggested: 2500, min: 0, max: 5000, unit: 'kb' },
-    { name: 'fid', suggested: 100, min: 0, max: 500, unit: 'kb' },
-    { name: 'cls', suggested: 0.1, min: 0, max: 1, step: 0.01, unit: 'kb' },
-    { name: 'inp', suggested: 0.2, min: 0, max: 1, step: 0.01, unit: 'kb' },
-  ],
-};
 export interface BudgetState {
   budgetType: BudgetTypes | null;
   budgetValues: BudgetLineItem[];
