@@ -61,7 +61,7 @@ const BUDGET_LINE_ITEMS: BudgetLineItems = {
   cwv: [
     {
       label: 'LCP',
-      name: 'lcp',
+      name: 'largest-contentful-paint',
       suggested: 2500,
       min: 0,
       max: 5000,
@@ -70,7 +70,7 @@ const BUDGET_LINE_ITEMS: BudgetLineItems = {
     },
     {
       label: 'FID',
-      name: 'fid',
+      name: 'max-potential-fid',
       suggested: 100,
       min: 0,
       max: 500,
@@ -79,18 +79,8 @@ const BUDGET_LINE_ITEMS: BudgetLineItems = {
     },
     {
       label: 'CLS',
-      name: 'cls',
+      name: 'cumulative-layout-shift',
       suggested: 0.1,
-      min: 0,
-      max: 1,
-      step: 0.01,
-      unit: '',
-      type: LighthouseType.timings,
-    },
-    {
-      label: 'INP',
-      name: 'inp',
-      suggested: 0.2,
       min: 0,
       max: 1,
       step: 0.01,

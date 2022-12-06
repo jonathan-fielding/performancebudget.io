@@ -1,5 +1,5 @@
 import { saveAs } from 'file-saver';
-import { BudgetLineItem } from '../store/budget-slice';
+import { BudgetLineItem } from '../types/budget';
 import buildJson from './build-json';
 
 export default function downloadBudget(budget: BudgetLineItem[]) {

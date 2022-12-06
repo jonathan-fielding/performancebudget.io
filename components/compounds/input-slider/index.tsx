@@ -15,6 +15,7 @@ export default function InputSlider({
   min,
   max,
   step,
+  label,
   userValue,
   unit,
   changeValue,
@@ -22,7 +23,7 @@ export default function InputSlider({
   return (
     <div>
       <label htmlFor={name} className="mb-2 block">
-        {name}
+        {label}
         <span className="float-right">
           {userValue}
           {unit}

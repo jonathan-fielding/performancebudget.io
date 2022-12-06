@@ -9,9 +9,17 @@ export default function buildJson(budgetLineItems: BudgetLineItem[]) {
       budget: userValue,
     }));
 
+  const timings = budgetLineItems
+    .filter((line) => line.type === LighthouseType.timings)
+    .map(({ name, userValue }) => ({
+      resourceType: name,
+      budget: userValue,
+    }));
+
   return [
     {
       resourceSizes,
+      timings,
     },
   ];
 }

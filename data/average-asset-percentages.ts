@@ -1,4 +1,4 @@
-//TODO - update these based on newer values
+// TODO - update these based on newer values
 export const AVERAGE_PERCENTS: { [key: string]: number } = {
   stylesheet: 3.25,
   document: 2.5,
@@ -7,3 +7,5 @@ export const AVERAGE_PERCENTS: { [key: string]: number } = {
   media: 9.75,
   font: 5,
 };
+
+export default AVERAGE_PERCENTS;
