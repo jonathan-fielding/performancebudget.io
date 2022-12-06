@@ -57,7 +57,7 @@ const posts = [
     author: 'Philip Walton',
     path: 'https://web.dev/vitals/',
     tags: ['all', 'cwv'],
-    postDate: '17 Aug 2022',
+    postDate: '30 Apr 2020',
   },
   {
     key: 7,
