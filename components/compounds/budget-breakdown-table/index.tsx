@@ -13,7 +13,7 @@ export default function BudgetBreakdownTable() {
         <Row>
           {budgetValues.map((budgetValue) => (
             <HeadingColumn key={budgetValue.name}>
-              {budgetValue.name}
+              {budgetValue.label}
             </HeadingColumn>
           ))}
         </Row>
