@@ -1,50 +1,8 @@
 import React from 'react';
-import { FunnelIcon } from '@heroicons/react/20/solid';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectFilterValue,
-  setFilterValue,
-} from '../../../store/resourcesSlice';
-
-interface FilterValues {
-  id: number;
-  name: string;
-  value: string | null;
-}
-
-const filterValues: FilterValues[] = [
-  {
-    id: 0,
-    name: 'Filter by',
-    value: 'all',
-  },
-  {
-    id: 1,
-    name: 'Performance Budgets',
-    value: 'budget',
-  },
-  {
-    id: 2,
-    name: 'Core Web Vitals',
-    value: 'cwv',
-  },
-  {
-    id: 3,
-    name: 'Case Studies',
-    value: 'case-study',
-  },
-];
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-}
+import { useDispatch } from 'react-redux';
+import { setFilterValue } from '../../../store/resourcesSlice';
 
 export default function ResourceFilter() {
-  const [filtersVisible, setFiltersVisible] = React.useState(false);
-  const selectedValue = useSelector(selectFilterValue);
-  const selectedFilter = filterValues.find(
-    (filterValue) => filterValue.value === selectedValue
-  );
   const dispatch = useDispatch();
   const setSelected = ({ target }: any) => {
     dispatch(setFilterValue(target.value));
