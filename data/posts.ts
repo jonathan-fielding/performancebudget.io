@@ -44,6 +44,42 @@ const posts = [
     path: 'https://www.gov.uk/service-manual/technology/how-to-test-frontend-performance',
     tags: ['all', 'budget'],
   },
+  {
+    key: 6,
+    title: 'Web Vitals',
+    description:
+      "Optimizing for quality of user experience is key to the long-term success of any site on the web. Whether you're a business owner, marketer, or developer, Web Vitals can help you quantify the experience of your site and identify opportunities to improve.",
+    author: 'Philip Walton',
+    path: 'https://web.dev/vitals/',
+    tags: ['all', 'cwv'],
+  },
+  {
+    key: 7,
+    title: 'Optimize Largest Contentful Paint',
+    description:
+      'A step-by-step guide on how to break down LCP and identify key areas to improve.',
+    author: 'Philip Walton',
+    path: 'https://web.dev/optimize-lcp/',
+    tags: ['all', 'cwv'],
+  },
+  {
+    key: 8,
+    title: 'Optimize First Input Delay',
+    description:
+      'A step-by-step guide on how to respond faster to user interactions',
+    author: 'Houssein Djirdeh',
+    path: 'https://web.dev/optimize-fid/',
+    tags: ['all', 'cwv'],
+  },
+  {
+    key: 9,
+    title: 'Optimize Cumulative Layout Shift',
+    description:
+      'Learn how to avoid sudden layout shifts to improve user-experience',
+    author: 'Addy Osmani & Barry Pollard',
+    path: 'https://web.dev/optimize-cls/',
+    tags: ['all', 'cwv'],
+  },
 ];
 
 export default posts;
