@@ -1,0 +1,24 @@
+name: Run Next Build
+
+on:
+  - pull_request
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      
+      # Check out the repository
+      - uses: actions/checkout@v1
+
+      # Install Node.js
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 18
+
+      # Install your dependencies
+      - run: yarn
+
+      # Run Build
+      - run: yarn run build
