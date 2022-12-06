@@ -23,7 +23,7 @@ export default function EstimatedLoadTimeTable() {
         </Row>
       </thead>
       <tbody>
-        {CONNECTION_SPEEDS.map((connectionSpeed) => (
+        {CONNECTION_SPEEDS.filter(({ show }) => show).map((connectionSpeed) => (
           <Row key={connectionSpeed.name}>
             <HeadingColumn>{connectionSpeed.name}</HeadingColumn>
             <DataColumn>
