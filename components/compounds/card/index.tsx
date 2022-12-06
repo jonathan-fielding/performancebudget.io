@@ -5,6 +5,7 @@ interface CardProps {
   description: string;
   author: string;
   path: string;
+  postDate: string;
 }
 
 export default function Card({
