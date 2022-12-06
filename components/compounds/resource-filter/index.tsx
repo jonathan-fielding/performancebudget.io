@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
-import { Listbox, Transition } from '@headlessui/react';
-import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
+import React from 'react';
+import { FunnelIcon } from '@heroicons/react/20/solid';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectFilterValue,
@@ -41,96 +40,37 @@ function classNames(...classes: string[]) {
 }
 
 export default function ResourceFilter() {
+  const [filtersVisible, setFiltersVisible] = React.useState(false);
   const selectedValue = useSelector(selectFilterValue);
   const selectedFilter = filterValues.find(
-    (filterValue) => filterValue.value === selectedValue,
+    (filterValue) => filterValue.value === selectedValue
   );
   const dispatch = useDispatch();
-  const setSelected = ({ value }: FilterValues) => {
-    dispatch(setFilterValue(value));
+  const setSelected = ({ target }: any) => {
+    dispatch(setFilterValue(target.value));
   };
 
   return (
-    <Listbox value={selectedFilter} onChange={setSelected}>
-      {({ open }) => (
-        <>
-          <Listbox.Label className="text-md sm:text-md font-bold text-gray-700 pb-4 pr-4">
-            Filter:
-          </Listbox.Label>
-
-          <div className="relative mt-1 mb-5">
-            <Listbox.Button className="relative cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-md w-64">
-              {selectedFilter?.id === 0 ? (
-                <span className="flex items-center">
-                  <span className="ml-3 px-1 block truncate">
-                    {selectedFilter.name}
-                  </span>
-                </span>
-              ) : (
-                <span className="flex items-center">
-                  <span className="ml-3 block truncate">
-                    {selectedFilter?.name}
-                  </span>
-                </span>
-              )}
-
-              <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
-                <ChevronUpDownIcon
-                  className="h-5 w-5 text-gray-400"
-                  aria-hidden="true"
-                />
-              </span>
-            </Listbox.Button>
-
-            <Transition
-              show={open}
-              as={Fragment}
-              leave="transition ease-in duration-100"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
-            >
-              <Listbox.Options className=" w-64 absolute z-10 mt-1 max-h-56 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                {filterValues.map((filterValue) => (
-                  <Listbox.Option
-                    key={filterValue.id}
-                    className={({ active }) => classNames(
-                      active ? 'text-white bg-indigo-600' : 'text-gray-900',
-                      'relative cursor-default select-none py-2 pl-3 pr-9',
-                    )}
-                    value={filterValue}
-                  >
-                    {({ selected, active }) => (
-                      <>
-                        <div className="flex items-center">
-                          <span
-                            className={classNames(
-                              selected ? 'font-semibold' : 'font-normal',
-                              'ml-3 block truncate',
-                            )}
-                          >
-                            {filterValue.name}
-                          </span>
-                        </div>
-
-                        {selected ? (
-                          <span
-                            className={classNames(
-                              active ? 'text-white' : 'text-indigo-600',
-                              'absolute inset-y-0 right-0 flex items-center pr-4',
-                            )}
-                          >
-                            <CheckIcon className="h-5 w-5" aria-hidden="true" />
-                          </span>
-                        ) : null}
-                      </>
-                    )}
-                  </Listbox.Option>
-                ))}
-              </Listbox.Options>
-            </Transition>
-          </div>
-        </>
-      )}
-    </Listbox>
+    <div className="pb-8">
+      <div className="px-4 py-8 bg-white rounded-lg">
+        <h2 className="px-4 pb-2 text-gray-700 font-bold text-xl sm:text-2xl">
+          Filters
+        </h2>
+        <div className="px-4">
+          <h2>Topics</h2>
+          <select
+            className="select select-bordered w-full"
+            onChange={setSelected}
+          >
+            <option selected value="all">
+              Show All
+            </option>
+            <option value="case-study">Case Study</option>
+            <option value="cwv">Core Web Vitals</option>
+            <option value="budget">Performance Budgets</option>
+          </select>
+        </div>
+      </div>
+    </div>
   );
 }
