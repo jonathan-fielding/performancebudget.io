@@ -4,12 +4,12 @@ import { useSelector } from 'react-redux';
 import Hero from '../components/compounds/hero';
 import Footer from '../components/compounds/footer';
 import Stepper from '../components/compounds/stepper';
-import BudgetType from '../components/modules/select-budget-type';
-import BudgetConfiguration from '../components/modules/budget-configuration';
-
 import { selectStep } from '../store/budget-slice';
-import PreviewBudget from '../components/modules/preview-budget';
-import DownloadBudget from '../components/modules/download-budget';
+
+import BudgetType from '../components/modules/step-1-select-budget-type';
+import BudgetConfiguration from '../components/modules/step-2-budget-configuration';
+import PreviewBudget from '../components/modules/step-3-preview-budget';
+import DownloadBudget from '../components/modules/step-4-download-budget';
 
 function Home() {
   const step = useSelector(selectStep);
