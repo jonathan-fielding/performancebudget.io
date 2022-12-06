@@ -12,7 +12,7 @@ export default function buildJson(budgetLineItems: BudgetLineItem[]) {
   const timings = budgetLineItems
     .filter((line) => line.type === LighthouseType.timings)
     .map(({ name, userValue }) => ({
-      resourceType: name,
+      metric: name,
       budget: userValue,
     }));
 
