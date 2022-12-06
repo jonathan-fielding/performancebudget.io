@@ -89,6 +89,36 @@ const posts = [
     tags: ['all', 'cwv'],
     postDate: '05 May 2020',
   },
+  {
+    key: 10,
+    title: 'How Netflix learnt to keep an eye on the cost of JavaScript',
+    description:
+      'A case study into how Netflix improved their web performance of their homepage on desktop by starting to be more mindful of the cost of JavaScript',
+    author: 'Addy Osmani',
+    path: 'https://medium.com/dev-channel/a-netflix-web-performance-case-study-c0bcde26a9d9',
+    tags: ['all', 'case-study'],
+    postDate: '05 Nov 2018',
+  },
+  {
+    key: 11,
+    title: 'Yelp boosted user conversion by 15% with their performance wins',
+    description:
+      'A case study into how Yelp improving their First Contentful Paint by 45% and Page Complete by 25% resulted in a 15% improvement in conversion',
+    author: 'Shubham Gupta',
+    path: 'https://engineeringblog.yelp.com/2021/01/boosting-user-conversion-with-ux-performance-wins.html',
+    tags: ['all', 'case-study'],
+    postDate: '27 Jan 2021',
+  },
+  {
+    key: 12,
+    title: 'How QuintoAndar improved their Lighthouse performance score to 97',
+    description:
+      'TK takes us through a case study from his time at QuintoAndar about how they optimised the performance of a React progressive web app',
+    author: 'TK',
+    path: 'https://www.iamtk.co/optimizing-the-performance-of-a-react-progressive-web-app',
+    tags: ['all', 'case-study'],
+    postDate: '04 Apr 2021',
+  },
 ];
 
 export default posts;

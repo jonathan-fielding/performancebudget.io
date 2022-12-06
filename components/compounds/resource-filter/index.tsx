@@ -29,6 +29,11 @@ const filterValues: FilterValues[] = [
     name: 'Core Web Vitals',
     value: 'cwv',
   },
+  {
+    id: 3,
+    name: 'Case Studies',
+    value: 'case-study',
+  },
 ];
 
 function classNames(...classes: string[]) {
