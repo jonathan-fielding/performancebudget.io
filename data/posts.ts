@@ -7,6 +7,7 @@ const posts = [
     author: 'Addy Osmani',
     path: 'https://addyosmani.com/blog/performance-budgets/',
     tags: ['all', 'budget'],
+    postDate: '01 Oct 2018',
   },
   {
     key: 2,
@@ -16,6 +17,7 @@ const posts = [
     author: 'Milica Mihajlija',
     path: 'https://web.dev/performance-budgets-101/',
     tags: ['all', 'budget'],
+    postDate: '05 Nov 2018',
   },
   {
     key: 3,
@@ -25,6 +27,7 @@ const posts = [
     author: 'Milica Mihajlija',
     path: 'https://web.dev/incorporate-performance-budgets-into-your-build-tools/',
     tags: ['all', 'budget'],
+    postDate: '01 Feb 2019',
   },
   {
     key: 4,
@@ -34,6 +37,7 @@ const posts = [
     author: 'Alex Russell',
     path: 'https://infrequently.org/2017/10/can-you-afford-it-real-world-web-performance-budgets/',
     tags: ['all', 'budget'],
+    postDate: '22 Oct 2017',
   },
   {
     key: 5,
@@ -43,6 +47,7 @@ const posts = [
     author: 'Gov.uk',
     path: 'https://www.gov.uk/service-manual/technology/how-to-test-frontend-performance',
     tags: ['all', 'budget'],
+    postDate: '14 Mar 2019',
   },
   {
     key: 6,
@@ -52,6 +57,7 @@ const posts = [
     author: 'Philip Walton',
     path: 'https://web.dev/vitals/',
     tags: ['all', 'cwv'],
+    postDate: '30 Apr 2020',
   },
   {
     key: 7,
@@ -61,6 +67,7 @@ const posts = [
     author: 'Philip Walton',
     path: 'https://web.dev/optimize-lcp/',
     tags: ['all', 'cwv'],
+    postDate: '05 May 2020',
   },
   {
     key: 8,
@@ -70,6 +77,7 @@ const posts = [
     author: 'Houssein Djirdeh',
     path: 'https://web.dev/optimize-fid/',
     tags: ['all', 'cwv'],
+    postDate: '05 May 2020',
   },
   {
     key: 9,
@@ -79,6 +87,7 @@ const posts = [
     author: 'Addy Osmani & Barry Pollard',
     path: 'https://web.dev/optimize-cls/',
     tags: ['all', 'cwv'],
+    postDate: '05 May 2020',
   },
 ];
 
