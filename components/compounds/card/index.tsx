@@ -8,7 +8,11 @@ interface CardProps {
 }
 
 export default function Card({
-  title, description, author, path,
+  title,
+  description,
+  author,
+  path,
+  postDate,
 }: CardProps) {
   return (
     <a
@@ -19,6 +23,7 @@ export default function Card({
       <p>{description}</p>
       <hr className="my-6 border-gray-300" />
       <p>{author}</p>
+      <p>{postDate}</p>
     </a>
   );
 }
