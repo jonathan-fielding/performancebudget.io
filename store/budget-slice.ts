@@ -4,9 +4,10 @@ import { HYDRATE } from 'next-redux-wrapper';
 import { AppState } from '.';
 import { calcBudget } from '../utils/budget-size';
 import { add } from '../utils/add';
-import { calculateDefaultValues } from '../utils/calculate-default-values';
+import calculateDefaultValues from '../utils/calculate-default-values';
 import { BudgetTypes } from '../types/enums';
 import { BudgetLineItem } from '../types/budget';
+
 export interface BudgetState {
   budgetType: BudgetTypes | null;
   budgetValues: BudgetLineItem[];

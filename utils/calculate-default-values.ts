@@ -2,18 +2,9 @@ import clone from 'just-clone';
 import BUDGET_LINE_ITEMS from '../data/budget-line-items';
 import { BudgetLineItem } from '../types/budget';
 import { BudgetTypes } from '../types/enums';
+import { AVERAGE_PERCENTS } from '../data/average-asset-percentages';
 
-//TODO - update these based on newer values
-const AVERAGE_PERCENTS: { [key: string]: number } = {
-  stylesheet: 3.25,
-  document: 2.5,
-  script: 16.5,
-  image: 63,
-  media: 9.75,
-  font: 5,
-};
-
-export function calculateDefaultValues(
+function calculateDefaultValues(
   type: BudgetTypes,
   size: number
 ): BudgetLineItem[] {
@@ -21,13 +12,19 @@ export function calculateDefaultValues(
   const values = clone(lineItems);
   return values.map((lineItem) => {
     const average: number = AVERAGE_PERCENTS[lineItem.name];
+    // Check if we have data meaning we can offer a more meaningful starting point
     if (average) {
-      lineItem.userValue = Math.round(size * average) / 100;
-      lineItem.max = size;
-    } else {
-      lineItem.userValue = lineItem.suggested;
+      return {
+        ...lineItem,
+        userValue: Math.round(size * average) / 100,
+        max: size,
+      };
     }
-
-    return lineItem;
+    return {
+      ...lineItem,
+      userValue: lineItem.suggested,
+    };
   });
 }
+
+export default calculateDefaultValues;
