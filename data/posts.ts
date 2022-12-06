@@ -119,6 +119,16 @@ const posts = [
     tags: ['all', 'case-study'],
     postDate: '04 Apr 2021',
   },
+  {
+    key: 13,
+    title: 'Reduce Image Sizes by Removing Metadata',
+    description:
+      '43% of a web pages weight can be attributed to images, metadata on the images can be a bit contributor to that so Robert Boedigheimer takes us through how to remove it',
+    author: 'Robert Boedigheimer',
+    path: 'https://calendar.perfplanet.com/2022/reduce-image-sizes-by-removing-metadata/',
+    tags: ['all', 'budget'],
+    postDate: '05 Dec 2022',
+  },
 ];
 
 export default posts;
