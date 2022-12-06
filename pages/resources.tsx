@@ -11,8 +11,11 @@ import posts from '../data/posts';
 
 function Blog() {
   const filter = useSelector(selectFilterValue);
-
-  const filteredPosts = posts.filter((post) => post.tags.includes(filter || ''));
+  const filteredPosts = posts
+    .filter((post) => post.tags.includes(filter || ''))
+    .sort(
+      (a, b) => new Date(b.postDate).getTime() - new Date(a.postDate).getTime()
+    );
 
   return (
     <>
