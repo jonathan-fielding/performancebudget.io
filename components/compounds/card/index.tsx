@@ -18,7 +18,7 @@ export default function Card({
   return (
     <a
       href={path}
-      className="p-6 shadow-lg rounded-lg bg-gray-100 text-gray-700"
+      className="block p-6 shadow-lg rounded-lg bg-gray-100 text-gray-700"
     >
       <h2 className="font-semibold text-3xl mb-5">{title}</h2>
       <p>{description}</p>
