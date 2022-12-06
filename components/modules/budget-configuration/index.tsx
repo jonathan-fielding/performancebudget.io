@@ -33,7 +33,9 @@ export default function BudgetConfiguration() {
       {budgetType === BudgetTypes.asset && <TotalByteBudget />}
 
       <div className="grid sm:grid-cols-2 gap-8 pb-8">
-        {fields?.map(({ name, min, max, step, userValue, unit, label }) => (
+        {fields?.map(({
+          name, min, max, step, userValue, unit, label,
+        }) => (
           <InputSlider
             key={name}
             changeValue={changeValue}

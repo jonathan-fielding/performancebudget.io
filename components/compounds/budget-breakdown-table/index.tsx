@@ -22,8 +22,10 @@ export default function BudgetBreakdownTable() {
         <Row>
           {budgetValues.map((budgetValue) => (
             <DataColumn key={budgetValue.name}>
-              {budgetValue?.userValue}
-              {budgetValue?.unit}
+              <span>
+                {budgetValue?.userValue}
+                {budgetValue?.unit}
+              </span>
             </DataColumn>
           ))}
         </Row>

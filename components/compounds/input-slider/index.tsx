@@ -1,11 +1,12 @@
 import React from 'react';
 
 interface InputSliderProps {
+  label: string;
   name: string;
   min: number;
   max: number;
-  step: number;
-  userValue: number;
+  step?: number;
+  userValue?: number;
   unit: string;
   changeValue: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }

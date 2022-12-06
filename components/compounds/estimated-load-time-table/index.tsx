@@ -27,7 +27,7 @@ export default function EstimatedLoadTimeTable() {
           <Row key={connectionSpeed.name}>
             <HeadingColumn>{connectionSpeed.name}</HeadingColumn>
             <DataColumn>
-              {`${calculateTime(budgetSize, connectionSpeed.speed)}`}
+              {`${calculateTime(budgetSize, connectionSpeed.value)}`}
             </DataColumn>
           </Row>
         ))}

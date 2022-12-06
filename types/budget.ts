@@ -1,7 +1,7 @@
 import { BudgetTypes, LighthouseType } from './enums';
 
 export interface BudgetLineItem {
-  label: String;
+  label: string;
   name: string;
   suggested: number;
   min: number;
