@@ -66,12 +66,12 @@ const CONNECTION_SPEEDS: ConnectionSpeed[] = [
     value: 2500,
     show: true,
   },
-  {
-    id: 10,
-    name: 'Custom',
-    value: 999999999999,
-    show: false,
-  },
+  // {
+  //   id: 10,
+  //   name: 'Custom',
+  //   value: 999999999999,
+  //   show: false,
+  // },
 ];
 
 export default CONNECTION_SPEEDS;
