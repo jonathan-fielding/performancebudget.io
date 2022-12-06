@@ -4,7 +4,7 @@ import { selectLoadTime, setLoadTime } from '../../../store/budget-slice';
 
 // Take any value and check its a number
 function isNumber(value: any) {
-  return !Number.isNaN(value);
+  return !Number.isNaN(Number(value));
 }
 
 export default function BudgetTimeInput() {
