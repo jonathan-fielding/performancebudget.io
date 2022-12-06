@@ -17,7 +17,7 @@ This section includes advice on how to build new features for the project & what
 * These are the updates we hope you make to the changelog: 
 
 Don’t get discouraged! We estimate that the response time from the
-maintainers is around: 
+maintainers is around: 2 days
 
 # Bug triage
 
@@ -36,7 +36,7 @@ This sections explains how bug triaging is done for your project. Help beginners
 
 * You can close fixed bugs by testing old tickets to see if they are still happening.
 * You can update our changelog here:
-* You can remove duplicate bug reports by:
+* You can remove duplicate bug reports by
 
 
 # Beta testing

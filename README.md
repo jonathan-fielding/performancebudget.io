@@ -2,6 +2,20 @@
 
 `performancebudget.io` is a performance budget calcualtor used to help you understand the implications of how much data you send over the network to your users.
 
+## Running the site locally
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying the files inside `pages/index.tsx`. The page auto-updates as you edit the file.
+
 ## Contribute
 
 We have full contribution details in CONTRIBUTE.md
