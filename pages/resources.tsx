@@ -14,7 +14,7 @@ function Blog() {
   const filteredPosts = posts
     .filter((post) => post.tags.includes(filter || ''))
     .sort(
-      (a, b) => new Date(b.postDate).getTime() - new Date(a.postDate).getTime()
+      (a, b) => new Date(b.postDate).getTime() - new Date(a.postDate).getTime(),
     );
 
   return (
