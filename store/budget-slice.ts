@@ -2,8 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import { HYDRATE } from 'next-redux-wrapper';
 // eslint-disable-next-line import/no-cycle
 import { AppState } from '.';
-import { calcBudget } from '../utils/budget-size';
-import { add } from '../utils/add';
+import calcBudget from '../utils/budget-size';
+import add from '../utils/add';
 import calculateDefaultValues from '../utils/calculate-default-values';
 import { BudgetTypes } from '../types/enums';
 import { BudgetLineItem } from '../types/budget';

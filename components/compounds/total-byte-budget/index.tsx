@@ -4,7 +4,7 @@ import {
   selectBudgetSize,
   selectTotalBytes,
 } from '../../../store/budget-slice';
-import { twoDecimalPlace } from '../../../utils/rendering';
+import twoDecimalPlace from '../../../utils/rendering';
 
 export default function TotalByteBudget() {
   const budgetSize = useSelector(selectBudgetSize);
