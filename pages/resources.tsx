@@ -28,8 +28,8 @@ function Blog() {
         <div className="flex flex-col-reverse md:grid md:grid-cols-3 mx-auto max-w-7xl px-8">
           <div className="lg:grid lg:grid-cols-2 gap-8 mx-auto max-w-7xl col-span-2">
             {filteredPosts.map((post) => (
-              <div className="mb-8 lg:mb-0 md:flex">
-                <Card {...post} key={post.key} />
+              <div className="mb-8 lg:mb-0 md:flex" key={post.key}>
+                <Card {...post} />
               </div>
             ))}
           </div>
