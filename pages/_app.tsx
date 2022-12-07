@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { Provider } from 'react-redux';
+import { Analytics } from '@vercel/analytics/react';
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -16,6 +17,7 @@ function App({ Component, ...rest }: AppProps) {
         <link rel="icon" type="image/png" href="/favicon.png" />
       </Head>
       <Component {...props.pageProps} />
+      <Analytics />
     </Provider>
   );
 }
