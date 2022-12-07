@@ -1,7 +1,7 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import { createWrapper } from 'next-redux-wrapper';
 import { budgetSlice } from './budget-slice';
 import { resourcesSlice } from './resourcesSlice';
-import { createWrapper } from 'next-redux-wrapper';
 
 const makeStore = () =>
   configureStore({
