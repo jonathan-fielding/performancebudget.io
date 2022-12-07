@@ -38,6 +38,7 @@ export default function InputSlider({
         step={step}
         className="range range-md w-72 range-primary"
         onChange={changeValue}
+        value={userValue}
       />
     </div>
   );
