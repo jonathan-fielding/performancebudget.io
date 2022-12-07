@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { AppState } from '.';
 import { HYDRATE } from 'next-redux-wrapper';
+// eslint-disable-next-line import/no-cycle
+import { AppState } from '.';
 
 export interface ResourceSlide {
   filterValue: string;
