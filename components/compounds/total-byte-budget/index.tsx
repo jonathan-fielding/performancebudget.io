@@ -11,7 +11,7 @@ export default function TotalByteBudget() {
   const selectedBytes = useSelector(selectTotalBytes);
   const percentage = (selectedBytes / budgetSize) * 100;
   const used = `${twoDecimalPlace(selectedBytes)}Kb of ${twoDecimalPlace(
-    budgetSize,
+    budgetSize
   )}Kb used (${percentage.toFixed()}%)`;
 
   return <p className="pb-8 text-lg">{used}</p>;

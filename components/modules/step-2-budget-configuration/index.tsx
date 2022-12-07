@@ -21,7 +21,7 @@ export default function BudgetConfiguration() {
       setBudgetValue({
         name: field.target.name,
         value: Number(field.target.value),
-      }),
+      })
     );
   };
 
@@ -55,7 +55,7 @@ export default function BudgetConfiguration() {
               userValue={userValue}
               unit={unit}
             />
-          ),
+          )
         )}
       </div>
 

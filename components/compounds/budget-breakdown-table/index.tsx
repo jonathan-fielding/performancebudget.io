@@ -1,9 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectBudgetValues } from '../../../store/budget-slice';
-import {
-  Table, Row, DataColumn, HeadingColumn,
-} from '../../elements/table';
+import { Table, Row, DataColumn, HeadingColumn } from '../../elements/table';
 
 export default function BudgetBreakdownTable() {
   const budgetValues = useSelector(selectBudgetValues);

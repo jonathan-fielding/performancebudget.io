@@ -45,11 +45,11 @@ export default function BudgetType() {
           <BudgetTimeInput />
         </div>
       )}
-      {(budgetType === BudgetTypes.cwv
-        || (budgetType === BudgetTypes.asset
-          && connectionSpeed !== 0
-          && loadTime !== null
-          && loadTime > 0)) && <ButtonBar />}
+      {(budgetType === BudgetTypes.cwv ||
+        (budgetType === BudgetTypes.asset &&
+          connectionSpeed !== 0 &&
+          loadTime !== null &&
+          loadTime > 0)) && <ButtonBar />}
     </div>
   );
 }

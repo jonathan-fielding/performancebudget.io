@@ -11,7 +11,7 @@ export default function BudgetTimeInput() {
   const loadTime = useSelector(selectLoadTime);
   const dispatch = useDispatch();
   const [currentValue, setCurrentValue] = useState(
-    loadTime === null ? '' : String(loadTime),
+    loadTime === null ? '' : String(loadTime)
   );
 
   // Only allows numbers to be entered
