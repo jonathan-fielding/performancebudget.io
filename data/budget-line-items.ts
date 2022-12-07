@@ -9,7 +9,7 @@ const BUDGET_LINE_ITEMS: BudgetLineItems = {
       suggested: 2500,
       min: 0,
       max: 5000,
-      unit: 'kb',
+      unit: 'kB',
       type: LighthouseType.resourceSizes,
     },
     {
@@ -18,7 +18,7 @@ const BUDGET_LINE_ITEMS: BudgetLineItems = {
       suggested: 100,
       min: 0,
       max: 500,
-      unit: 'kb',
+      unit: 'kB',
       type: LighthouseType.resourceSizes,
     },
     {
@@ -27,7 +27,7 @@ const BUDGET_LINE_ITEMS: BudgetLineItems = {
       suggested: 100,
       min: 0,
       max: 1,
-      unit: 'kb',
+      unit: 'kB',
       type: LighthouseType.resourceSizes,
     },
     {
@@ -36,7 +36,7 @@ const BUDGET_LINE_ITEMS: BudgetLineItems = {
       suggested: 100,
       min: 0,
       max: 1,
-      unit: 'kb',
+      unit: 'kB',
       type: LighthouseType.resourceSizes,
     },
     {
@@ -45,7 +45,7 @@ const BUDGET_LINE_ITEMS: BudgetLineItems = {
       suggested: 100,
       min: 0,
       max: 1,
-      unit: 'kb',
+      unit: 'kB',
       type: LighthouseType.resourceSizes,
     },
     {
@@ -54,7 +54,7 @@ const BUDGET_LINE_ITEMS: BudgetLineItems = {
       suggested: 100,
       min: 0,
       max: 1,
-      unit: 'kb',
+      unit: 'kB',
       type: LighthouseType.resourceSizes,
     },
   ],
