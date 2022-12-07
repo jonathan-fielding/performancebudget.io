@@ -19,10 +19,9 @@ export default function ResourceFilter() {
           <select
             className="select select-bordered w-full"
             onChange={setSelected}
+            defaultValue="all"
           >
-            <option selected value="all">
-              Show All
-            </option>
+            <option value="all">Show All</option>
             <option value="case-study">Case Study</option>
             <option value="cwv">Core Web Vitals</option>
             <option value="budget">Performance Budgets</option>

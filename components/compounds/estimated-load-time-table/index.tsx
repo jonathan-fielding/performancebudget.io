@@ -2,10 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import CONNECTION_SPEEDS from '../../../data/connection-speeds';
 import { selectTotalBytes } from '../../../store/budget-slice';
-import { twoDecimalPlace } from '../../../utils/rendering';
-import {
-  Table, Row, DataColumn, HeadingColumn,
-} from '../../elements/table';
+import twoDecimalPlace from '../../../utils/rendering';
+import { Table, Row, DataColumn, HeadingColumn } from '../../elements/table';
 
 const calculateTime = (bytes: number, speed: number) => {
   const seconds = bytes / speed;

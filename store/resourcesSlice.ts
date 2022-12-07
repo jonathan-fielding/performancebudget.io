@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { AppState } from '.';
 import { HYDRATE } from 'next-redux-wrapper';
+// eslint-disable-next-line import/no-cycle
+import { AppState } from '.';
 
 export interface ResourceSlide {
   filterValue: string;
@@ -18,18 +19,19 @@ export const resourcesSlice = createSlice({
   reducers: {
     // Action to set the filter value
     setFilterValue(state: ResourceSlide, action) {
-      state.filterValue = action.payload;
+      return {
+        ...state,
+        filterValue: action.payload,
+      };
     },
   },
 
   // Special reducer for hydrating the state. Special case for next-redux-wrapper
   extraReducers: {
-    [HYDRATE]: (state: any, action: any) => {
-      return {
-        ...state,
-        ...action.payload.resources,
-      };
-    },
+    [HYDRATE]: (state: any, action: any) => ({
+      ...state,
+      ...action.payload.resources,
+    }),
   },
 });
 

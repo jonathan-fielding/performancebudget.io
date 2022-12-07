@@ -15,7 +15,7 @@ function classNames(...classes: string[]) {
 export default function ConnectionDropdown() {
   const selectedValue = useSelector(selectConnectionSpeed);
   const selectedConnectionSpeed = CONNECTION_SPEEDS.find(
-    (connection) => connection.value === selectedValue,
+    (connection) => connection.value === selectedValue
   );
   const dispatch = useDispatch();
   const setSelected = ({ value }: { value: number }) => {
@@ -55,10 +55,12 @@ export default function ConnectionDropdown() {
                 {CONNECTION_SPEEDS.map((person) => (
                   <Listbox.Option
                     key={person.id}
-                    className={({ active }) => classNames(
-                      active ? 'text-white bg-indigo-600' : 'text-gray-900',
-                      'relative cursor-default select-none py-2 pl-3 pr-9',
-                    )}
+                    className={({ active }) =>
+                      classNames(
+                        active ? 'text-white bg-indigo-600' : 'text-gray-900',
+                        'relative cursor-default select-none py-2 pl-3 pr-9'
+                      )
+                    }
                     value={person}
                   >
                     {({ selected, active }) => (
@@ -67,7 +69,7 @@ export default function ConnectionDropdown() {
                           <span
                             className={classNames(
                               selected ? 'font-semibold' : 'font-normal',
-                              'ml-3 block truncate',
+                              'ml-3 block truncate'
                             )}
                           >
                             {person.name}
@@ -78,7 +80,7 @@ export default function ConnectionDropdown() {
                           <span
                             className={classNames(
                               active ? 'text-white' : 'text-indigo-600',
-                              'absolute inset-y-0 right-0 flex items-center pr-4',
+                              'absolute inset-y-0 right-0 flex items-center pr-4'
                             )}
                           >
                             <CheckIcon className="h-5 w-5" aria-hidden="true" />

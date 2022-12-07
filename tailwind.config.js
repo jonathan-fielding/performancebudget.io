@@ -1,20 +1,17 @@
-const colors = require('tailwindcss/colors')
+const colors = require('tailwindcss/colors');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     colors: {
       ...colors,
-      primary: colors.indigo
+      primary: colors.indigo,
     },
     extend: {},
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-    require("daisyui"),
-  ],
-}
+  plugins: [require('@tailwindcss/forms'), require('daisyui')],
+};

@@ -2,8 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import { HYDRATE } from 'next-redux-wrapper';
 // eslint-disable-next-line import/no-cycle
 import { AppState } from '.';
-import { calcBudget } from '../utils/budget-size';
-import { add } from '../utils/add';
+import calcBudget from '../utils/budget-size';
+import add from '../utils/add';
 import calculateDefaultValues from '../utils/calculate-default-values';
 import { BudgetTypes } from '../types/enums';
 import { BudgetLineItem } from '../types/budget';
@@ -34,31 +34,42 @@ export const budgetSlice = createSlice({
   reducers: {
     // Action to set the budget type, resetting the values from constants
     setBudgetType(state: BudgetState, { payload }: { payload: BudgetTypes }) {
-      state.budgetType = payload;
-      state.budgetValues = calculateDefaultValues(payload, 0);
+      return {
+        ...state,
+        budgetType: payload,
+        budgetValues: calculateDefaultValues(payload, 0),
+      };
     },
 
     setBudgetValue(state: BudgetState, action) {
       const newBudgetValues: BudgetLineItem[] = state.budgetValues?.map(
         (budgetValue: BudgetLineItem) => {
           if (budgetValue.name === action.payload.name) {
-            budgetValue.userValue = action.payload.value;
+            return {
+              ...budgetValue,
+              userValue: action.payload.value,
+            };
           }
           return budgetValue;
         }
       );
 
-      state.budgetValues = newBudgetValues;
+      return {
+        ...state,
+        budgetValues: newBudgetValues,
+      };
     },
 
     // Action to set the budget type
     setStep(state: BudgetState, action) {
-      state.step = action.payload;
+      return {
+        ...state,
+        step: action.payload,
+      };
     },
 
     // Action to set the budget connection speed
     setConnectionSpeed(state: BudgetState, action) {
-      state.connectionSpeed = action.payload;
       if (state.loadTime && state.loadTime > 0) {
         const budgetSize = calcBudget(state.connectionSpeed, action.payload);
         state.budgetSize = budgetSize;
@@ -69,7 +80,10 @@ export const budgetSlice = createSlice({
           );
         }
       }
-      return state;
+      return {
+        ...state,
+        connectionSpeed: action.payload,
+      };
     },
 
     // Action to set the budget load time
@@ -92,12 +106,10 @@ export const budgetSlice = createSlice({
 
   // Special reducer for hydrating the state. Special case for next-redux-wrapper
   extraReducers: {
-    [HYDRATE]: (state: any, action: any) => {
-      return {
-        ...state,
-        ...action.payload.budget,
-      };
-    },
+    [HYDRATE]: (state: any, action: any) => ({
+      ...state,
+      ...action.payload.budget,
+    }),
   },
 });
 

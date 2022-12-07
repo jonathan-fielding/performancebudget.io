@@ -1,20 +1,23 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
+import { Provider } from 'react-redux';
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { wrapper } from '../store';
 
-function MyApp({ Component, pageProps }: AppProps) {
+function App({ Component, ...rest }: AppProps) {
+  const { store, props } = wrapper.useWrappedStore(rest);
+
   return (
-    <>
+    <Provider store={store}>
       <Head>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" type="image/png" href="/favicon.png" />
       </Head>
-      <Component {...pageProps} />
-    </>
+      <Component {...props.pageProps} />
+    </Provider>
   );
 }
 
-export default wrapper.withRedux(MyApp);
+export default App;
