@@ -18,18 +18,19 @@ export const resourcesSlice = createSlice({
   reducers: {
     // Action to set the filter value
     setFilterValue(state: ResourceSlide, action) {
-      state.filterValue = action.payload;
+      return {
+        ...state,
+        filterValue: action.payload,
+      };
     },
   },
 
   // Special reducer for hydrating the state. Special case for next-redux-wrapper
   extraReducers: {
-    [HYDRATE]: (state: any, action: any) => {
-      return {
-        ...state,
-        ...action.payload.resources,
-      };
-    },
+    [HYDRATE]: (state: any, action: any) => ({
+      ...state,
+      ...action.payload.resources,
+    }),
   },
 });
 
