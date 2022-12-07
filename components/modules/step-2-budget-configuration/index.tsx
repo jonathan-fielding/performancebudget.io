@@ -9,6 +9,7 @@ import ButtonBar from '../../compounds/button-bar';
 import TotalByteBudget from '../../compounds/total-byte-budget';
 import { BudgetTypes } from '../../../types/enums';
 import InputSlider from '../../compounds/input-slider';
+import { BudgetLineItem } from '../../../types/budget';
 
 export default function BudgetConfiguration() {
   const budgetType = useSelector(selectBudgetType);
@@ -33,21 +34,29 @@ export default function BudgetConfiguration() {
       {budgetType === BudgetTypes.asset && <TotalByteBudget />}
 
       <div className="grid sm:grid-cols-2 gap-8 pb-8">
-        {fields?.map(({
-          name, min, max, step, userValue, unit, label,
-        }) => (
-          <InputSlider
-            key={name}
-            changeValue={changeValue}
-            label={label}
-            name={name}
-            min={min}
-            max={max}
-            step={step}
-            userValue={userValue}
-            unit={unit}
-          />
-        ))}
+        {fields?.map(
+          ({
+            name,
+            min,
+            max,
+            step,
+            userValue,
+            unit,
+            label,
+          }: BudgetLineItem) => (
+            <InputSlider
+              key={name}
+              changeValue={changeValue}
+              label={label}
+              name={name}
+              min={min}
+              max={max}
+              step={step}
+              userValue={userValue}
+              unit={unit}
+            />
+          ),
+        )}
       </div>
 
       <ButtonBar />
